@@ -1,8 +1,8 @@
-const Repository = require('./Repository/Repository')
+const Request = require('./Repository/Request')
 
 class AuthManager {
     setAuthToken = (token) => {
-        Repository.defaults.headers.Authorization = `Bearer ${token}`;
+        Request.defaults.headers.Authorization = `Bearer ${token}`;
     }
 }
 

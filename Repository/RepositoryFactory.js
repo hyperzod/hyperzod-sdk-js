@@ -1,6 +1,6 @@
-const Global = require('./Global');
-const Auth = require('./Auth/Auth')
-const User = require('./User/User')
+const Global = require('.API//Global');
+const Auth = require('./API/Auth/Auth')
+const User = require('./API/User/User')
 
 const repositories = {
     global: Global,

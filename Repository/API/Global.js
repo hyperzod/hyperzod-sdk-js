@@ -1,4 +1,4 @@
-const Repository = require('./Repository');
+const Repository = require('../Request');
 
 module.exports = {
     // Get Tenant By Domain
@@ -18,16 +18,4 @@ module.exports = {
         const get_boot_settings = `/app/client/boot`
         return Repository.get(`${get_boot_settings}`, { params: { ...payload } })
     },
-
-    // Search Places
-    searchPlaces(payload) {
-        const places_search = `/places-search/search`
-        return Repository.post(`${places_search}`, payload)
-    },
-
-    // Reverse Geocode
-    reverseGeocode(payload) {
-        const reverse_geocode = `/places-search/reverse-geocode`
-        return Repository.post(`${reverse_geocode}`, payload)
-    }
 }

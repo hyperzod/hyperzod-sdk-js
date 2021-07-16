@@ -1,4 +1,4 @@
-const Repository = require('./Repository/Repository')
+const Repository = require('./Repository/Request')
 const AuthManager = require('./AuthManager')
 const {RepositoryFactory} = require('./Repository/RepositoryFactory')
 
