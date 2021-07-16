@@ -1,2 +1,2 @@
-# hyperzod-sdk-js
-Javascript SDK for Hyperzod
+# Javascript SDK for Hyperzod
+
