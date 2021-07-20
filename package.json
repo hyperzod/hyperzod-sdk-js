@@ -1,25 +1,25 @@
 {
   "name": "hyperzod-sdk",
   "version": "1.0.0",
-  "description": "SDK for Hyperzod",
+  "description": "JS SDK for Hyperzod",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Arslan038/hyperzod-sdk-js.git"
+    "url": "git+https://github.com/hyperzod/hyperzod-sdk-js.git"
   },
   "keywords": [
     "hyperzod",
     "hyperzod-sdk"
   ],
-  "author": "Arslan Ahmed",
+  "author": "Hyperzod",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Arslan038/hyperzod-sdk-js/issues"
+    "url": "https://github.com/hyperzod/hyperzod-sdk-js/issues"
   },
-  "homepage": "https://github.com/Arslan038/hyperzod-sdk-js#readme",
+  "homepage": "https://github.com/hyperzod/hyperzod-sdk-js#readme",
   "dependencies": {
     "axios": "^0.21.1",
     "axios-retry": "^3.1.9"
