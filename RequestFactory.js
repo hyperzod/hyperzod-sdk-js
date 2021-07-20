@@ -1,4 +1,4 @@
-const Global = require('.API//Global');
+const Global = require('./API/Global');
 const Auth = require('./API/Auth/Auth')
 const User = require('./API/User/User')
 
@@ -8,8 +8,8 @@ const repositories = {
     user: User,
 }
 
-const RepositoryFactory = {
+const RequestFactory = {
     get: name => repositories[name],
 };
 
-module.exports = {RepositoryFactory}
+module.exports = {RequestFactory}

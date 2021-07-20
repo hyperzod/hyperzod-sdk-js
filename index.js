@@ -1,13 +1,16 @@
-const Repository = require('./Repository/Request')
-const AuthManager = require('./AuthManager')
-const {RepositoryFactory} = require('./Repository/RepositoryFactory')
+const Request = require('./Request')
+const {RequestFactory} = require('./RequestFactory')
 
 // Modules To Import
-const Global = RepositoryFactory.get('global')
-const Auth = RepositoryFactory.get('auth')
+const Global = RequestFactory.get('global')
+const Auth = RequestFactory.get('auth')
 
 const setApiKey = (key) => {
-    Repository.defaults.headers['x-api-key'] = key;
+    Request.defaults.headers['x-api-key'] = key;
+}
+
+const setAuthToken = (token) => {
+    Request.defaults.headers.Authorization = `Bearer ${token}`;
 }
 
 const init = async (payload) => {
@@ -39,7 +42,7 @@ const init = async (payload) => {
 
 module.exports = {
     init,
-    AuthManager,
+    setAuthToken,
     Global,
     Auth
 }
