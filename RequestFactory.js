@@ -1,11 +1,27 @@
 const Global = require('./API/Global');
-const Auth = require('./API/Auth/Auth')
-const User = require('./API/User/User')
+const Tenant = require('./API/Tenant/Tenant');
+const Auth = require('./API/Auth/Auth');
+const User = require('./API/User/User');
+const Places = require('./API/Places/Places');
+const Merchant = require('./API/Merchant/Merchant');
+const Catalog = require('./API/Catalog/Catalog');
+const Promotional = require('./API/Promotional/Promotional');
+const AddressBook = require('./API/AddressBook/AddressBook');
+const Cart = require('./API/Cart/Cart');
+const Wallet = require('./API/Wallet/Wallet');
 
 const repositories = {
     global: Global,
+    tenant: Tenant,
     auth: Auth,
     user: User,
+    places: Places,
+    merchant: Merchant,
+    catalog: Catalog,
+    promotional: Promotional,
+    addressBook: AddressBook,
+    cart: Cart,
+    wallet: Wallet
 }
 
 const RequestFactory = {

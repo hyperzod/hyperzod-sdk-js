@@ -3,7 +3,15 @@ const {RequestFactory} = require('./RequestFactory')
 
 // Modules To Import
 const Global = RequestFactory.get('global')
+const Tenant = RequestFactory.get('tenant')
+const Places = RequestFactory.get('places')
 const Auth = RequestFactory.get('auth')
+const Merchant = RequestFactory.get('merchant')
+const Catalog = RequestFactory.get('catalog')
+const Promotional = RequestFactory.get('promotional')
+const AddressBook = RequestFactory.get('addressBook')
+const Cart = RequestFactory.get('cart')
+const Wallet = RequestFactory.get('wallet')
 
 const setApiKey = (key) => {
     Request.defaults.headers['x-api-key'] = key;
@@ -44,5 +52,13 @@ module.exports = {
     init,
     setAuthToken,
     Global,
-    Auth
+    Tenant,
+    Places,
+    Auth,
+    Merchant,
+    Catalog,
+    Promotional,
+    AddressBook,
+    Cart,
+    Wallet
 }
