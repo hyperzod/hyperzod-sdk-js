@@ -15,7 +15,7 @@ module.exports = {
 
     // Apply Coupon
     applyCoupon(payload) {
-        const url = `/cart/apply-coupon-to-cart`
+        const url = `/cart/apply-coupon`
         return Request.post(`${url}`, payload)
     },
 

@@ -17,6 +17,8 @@ const setApiKey = (key) => {
     Request.defaults.headers['x-api-key'] = key;
 }
 
+
+
 const setAuthToken = (token) => {
     Request.defaults.headers.Authorization = `Bearer ${token}`;
 }
