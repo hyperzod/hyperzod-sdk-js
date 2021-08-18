@@ -1,5 +1,5 @@
 {
-  "name": "hyperzod-sdk",
+  "name": "@hyperzod/hyperzod-sdk",
   "version": "1.0.0",
   "description": "JS SDK for Hyperzod",
   "main": "index.js",
