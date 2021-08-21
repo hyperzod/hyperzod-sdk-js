@@ -1,27 +1,56 @@
 {
-  "name": "@hyperzod/hyperzod-sdk",
-  "version": "1.0.2",
+  "_from": "@hyperzod/hyperzod-sdk",
+  "_id": "@hyperzod/hyperzod-sdk@1.0.2",
+  "_inBundle": false,
+  "_integrity": "sha512-NWljRDjcvzmdCD89Za45CvYIEd6kZuREbE9+K+H0qWD7FA7JoecIjaEldaK8FTtebqWgBjYh01zE3ql0e2jC9Q==",
+  "_location": "/@hyperzod/hyperzod-sdk",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "@hyperzod/hyperzod-sdk",
+    "name": "@hyperzod/hyperzod-sdk",
+    "escapedName": "@hyperzod%2fhyperzod-sdk",
+    "scope": "@hyperzod",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@hyperzod/hyperzod-sdk/-/hyperzod-sdk-1.0.2.tgz",
+  "_shasum": "f766cf3d26bb6768145828748b12b40f1debec3c",
+  "_spec": "@hyperzod/hyperzod-sdk",
+  "_where": "C:\\xampp\\htdocs\\hyperzod-frontend-client-dev",
+  "author": {
+    "name": "Hyperzod"
+  },
+  "bugs": {
+    "url": "https://github.com/hyperzod/hyperzod-sdk-js/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "axios": "^0.21.1",
+    "axios-retry": "^3.1.9"
+  },
+  "deprecated": false,
   "description": "JS SDK for Hyperzod",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/hyperzod/hyperzod-sdk-js.git"
-  },
+  "homepage": "https://github.com/hyperzod/hyperzod-sdk-js#readme",
   "keywords": [
     "hyperzod",
     "hyperzod-sdk"
   ],
-  "author": "Hyperzod",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/hyperzod/hyperzod-sdk-js/issues"
+  "main": "index.js",
+  "name": "@hyperzod/hyperzod-sdk",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hyperzod/hyperzod-sdk-js.git"
   },
-  "homepage": "https://github.com/hyperzod/hyperzod-sdk-js#readme",
-  "dependencies": {
-    "axios": "^0.21.1",
-    "axios-retry": "^3.1.9"
-  }
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.2"
 }

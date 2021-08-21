@@ -9,6 +9,7 @@ const Promotional = require('./API/Promotional/Promotional');
 const AddressBook = require('./API/AddressBook/AddressBook');
 const Cart = require('./API/Cart/Cart');
 const Wallet = require('./API/Wallet/Wallet');
+const Search = require('./API/Search/Search');
 
 const repositories = {
     global: Global,
@@ -21,7 +22,8 @@ const repositories = {
     promotional: Promotional,
     addressBook: AddressBook,
     cart: Cart,
-    wallet: Wallet
+    wallet: Wallet,
+    search: Search,
 }
 
 const RequestFactory = {
