@@ -1,6 +1,6 @@
 {
   "_from": "@hyperzod/hyperzod-sdk",
-  "_id": "@hyperzod/hyperzod-sdk@1.0.2",
+  "_id": "@hyperzod/hyperzod-sdk@1.0.4",
   "_inBundle": false,
   "_integrity": "sha512-NWljRDjcvzmdCD89Za45CvYIEd6kZuREbE9+K+H0qWD7FA7JoecIjaEldaK8FTtebqWgBjYh01zE3ql0e2jC9Q==",
   "_location": "/@hyperzod/hyperzod-sdk",
@@ -52,5 +52,5 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "1.0.2"
+  "version": "1.0.4"
 }
