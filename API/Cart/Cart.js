@@ -42,4 +42,10 @@ module.exports = {
         const url = `/cart/validate-product`
         return Request.post(`${url}`, payload)
     },
+
+    //Place Order 
+    placeOrder(payload) {
+        const url = `/order/create`
+        return Request.post(`${url}`, payload)
+    },
 }
