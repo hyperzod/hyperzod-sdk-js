@@ -11,6 +11,7 @@ const Cart = require('./API/Cart/Cart');
 const Wallet = require('./API/Wallet/Wallet');
 const Search = require('./API/Search/Search');
 const Order = require('./API/Order/Order');
+const Review = require('./API/Review/Review');
 
 const repositories = {
     global: Global,
@@ -25,7 +26,8 @@ const repositories = {
     cart: Cart,
     wallet: Wallet,
     search: Search,
-    order: Order
+    order: Order,
+    review: Review
 }
 
 const RequestFactory = {
