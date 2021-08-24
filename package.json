@@ -1,11 +1,5 @@
 {
-  "_args": [
-    [
-      "@hyperzod/hyperzod-sdk@1.0.4",
-      "C:\\xampp\\htdocs\\hyperzod-frontend-client-dev"
-    ]
-  ],
-  "_from": "@hyperzod/hyperzod-sdk@1.0.4",
+  "_from": "@hyperzod/hyperzod-sdk",
   "_id": "@hyperzod/hyperzod-sdk@1.0.4",
   "_inBundle": false,
   "_integrity": "sha512-l3HHybWrG+k1c6dSonzbG0fW3y1pB2EKEGexTD3JMeS9m5AxdMoyEKQ1e71Uz5pz23PBZw5gCB1DG3NeKlK/yw==",
