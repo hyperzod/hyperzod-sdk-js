@@ -1,28 +1,33 @@
 {
-  "_from": "@hyperzod/hyperzod-sdk",
-  "_id": "@hyperzod/hyperzod-sdk@1.0.2",
+  "_args": [
+    [
+      "@hyperzod/hyperzod-sdk@1.0.4",
+      "C:\\xampp\\htdocs\\hyperzod-frontend-client-dev"
+    ]
+  ],
+  "_from": "@hyperzod/hyperzod-sdk@1.0.4",
+  "_id": "@hyperzod/hyperzod-sdk@1.0.4",
   "_inBundle": false,
-  "_integrity": "sha512-NWljRDjcvzmdCD89Za45CvYIEd6kZuREbE9+K+H0qWD7FA7JoecIjaEldaK8FTtebqWgBjYh01zE3ql0e2jC9Q==",
+  "_integrity": "sha512-l3HHybWrG+k1c6dSonzbG0fW3y1pB2EKEGexTD3JMeS9m5AxdMoyEKQ1e71Uz5pz23PBZw5gCB1DG3NeKlK/yw==",
   "_location": "/@hyperzod/hyperzod-sdk",
   "_phantomChildren": {},
   "_requested": {
-    "type": "tag",
+    "type": "version",
     "registry": true,
-    "raw": "@hyperzod/hyperzod-sdk",
+    "raw": "@hyperzod/hyperzod-sdk@1.0.4",
     "name": "@hyperzod/hyperzod-sdk",
     "escapedName": "@hyperzod%2fhyperzod-sdk",
     "scope": "@hyperzod",
-    "rawSpec": "",
+    "rawSpec": "1.0.4",
     "saveSpec": null,
-    "fetchSpec": "latest"
+    "fetchSpec": "1.0.4"
   },
   "_requiredBy": [
-    "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/@hyperzod/hyperzod-sdk/-/hyperzod-sdk-1.0.2.tgz",
+  "_resolved": "https://registry.npmjs.org/@hyperzod/hyperzod-sdk/-/hyperzod-sdk-1.0.4.tgz",
   "_shasum": "f766cf3d26bb6768145828748b12b40f1debec3c",
-  "_spec": "@hyperzod/hyperzod-sdk",
+  "_spec": "1.0.4",
   "_where": "C:\\xampp\\htdocs\\hyperzod-frontend-client-dev",
   "author": {
     "name": "Hyperzod"
@@ -30,7 +35,6 @@
   "bugs": {
     "url": "https://github.com/hyperzod/hyperzod-sdk-js/issues"
   },
-  "bundleDependencies": false,
   "dependencies": {
     "axios": "^0.21.1",
     "axios-retry": "^3.1.9"
@@ -52,5 +56,5 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "1.0.2"
+  "version": "1.0.4"
 }

@@ -13,6 +13,7 @@ const AddressBook = RequestFactory.get('addressBook')
 const Cart = RequestFactory.get('cart')
 const Wallet = RequestFactory.get('wallet')
 const Search = RequestFactory.get('search')
+const Order = RequestFactory.get('order')
 
 const setApiKey = (key) => {
     Request.defaults.headers['x-api-key'] = key;
@@ -62,5 +63,6 @@ module.exports = {
     AddressBook,
     Cart,
     Wallet,
-    Search
+    Search,
+    Order
 }
