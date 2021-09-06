@@ -14,7 +14,7 @@ const baseURL = 'https://api.hyperzod.dev';
 
 const API = axios.create({
   baseURL,
-  headers: {'Content-Type' : 'application/json', 'x-api-key': 'rZw4wZRMx3dj8fCVxdCUj56462h2pP'}
+  headers: { 'Content-Type': 'application/json', 'x-api-key': 'o6tLXXRjGemgmb7YrfbVmA0w3Hqtlg' }
 });
 
 axiosRetry(API, { retries: 3 });
