@@ -13,4 +13,8 @@ module.exports = {
         return Request.get(`${url}`, { params: { ...payload }})
     },
 
+    getOrderSchedulling(payload) {
+        const url = `/order/scheduling-slots`
+        return Request.get(`${url}`, { params: { ...payload }})
+    }
 }
