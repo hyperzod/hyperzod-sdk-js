@@ -13,6 +13,7 @@ const Search = require('./API/Search/Search');
 const Order = require('./API/Order/Order');
 const Review = require('./API/Review/Review');
 const Page = require('./API/Page/Page');
+const Payment = require('./API/Payment/Payment');
 
 const repositories = {
     global: Global,
@@ -29,7 +30,8 @@ const repositories = {
     search: Search,
     order: Order,
     review: Review,
-    page: Page
+    page: Page,
+    payment: Payment
 }
 
 const RequestFactory = {
