@@ -2,8 +2,8 @@ const Request = require('../../Request');
 
 module.exports = {
     //Create Paymemt 
-    createPayment(payload) {
-        const url = `/payment/pgcallback/paypal?tenant_id=1`
+    createPayment(data, payload) {
+        const url = `/payment/pgcallback/${data.method}?tenant_id=${data.id}`
         return Request.get(`${url}`, { params: { ...payload }})
     },
 }
