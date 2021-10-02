@@ -23,6 +23,10 @@ const setApiKey = (key) => {
 }
 
 const setAuthToken = (token) => {
+    if(token === null) {
+        delete Request.defaults.headers.Authorization
+        return;
+    }
     Request.defaults.headers.Authorization = `Bearer ${token}`;
 }
 
