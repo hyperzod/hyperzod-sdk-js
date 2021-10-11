@@ -23,8 +23,21 @@ const setApiKey = (key) => {
 }
 
 const setAuthToken = (token) => {
+    if(token === null) {
+        delete Request.defaults.headers.Authorization
+        return;
+    }
     Request.defaults.headers.Authorization = `Bearer ${token}`;
 }
+
+Request.interceptors.response.use(response => {
+    if(response.data.message === 'Unauthorized token.') { 
+        delete response.config.headers.Authorization
+        setAuthToken(null);
+        return Request(response.config);
+    }; 
+    return response;
+});
 
 const init = async (payload) => {
 
