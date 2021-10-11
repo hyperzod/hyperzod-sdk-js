@@ -30,13 +30,13 @@ const setAuthToken = (token) => {
     Request.defaults.headers.Authorization = `Bearer ${token}`;
 }
 
-Request.interceptors.response.use(response => {
-    if(response.data.message === 'Unauthorized token.') { 
-        delete response.config.headers.Authorization
+Request.interceptors.response.use(response => response, error => {
+    if(error.response.status === 401) {
+        delete error.response.config.headers.Authorization
         setAuthToken(null);
-        return Request(response.config);
-    }; 
-    return response;
+        return Request(error.response.config);
+    } 
+    return error;
 });
 
 const init = async (payload) => {
