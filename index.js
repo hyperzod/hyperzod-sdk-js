@@ -32,7 +32,6 @@ const setAuthToken = (token) => {
 }
 
 Request.interceptors.response.use(response => response, error => {
-    console.log(error.response);
     if(error.response.status === 401 && error.response.config.url !== '/auth/me' && error.response.config.url !== '/auth/logout') {
         delete error.response.config.headers.Authorization
         setAuthToken(null);
