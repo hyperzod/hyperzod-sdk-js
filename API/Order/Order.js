@@ -13,6 +13,12 @@ module.exports = {
         return Request.get(`${url}`, { params: { ...payload }})
     },
 
+    //fetch Orders
+    getOrder(payload) {
+        const url = `/order`
+        return Request.get(`${url}`, { params: { ...payload }})
+    },
+
     getOrderSchedulling(payload) {
         const url = `/order/scheduling-slots`
         return Request.get(`${url}`, { params: { ...payload }})

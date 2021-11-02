@@ -26,17 +26,20 @@ const setAuthToken = (token) => {
     if(token === null) {
         delete Request.defaults.headers.Authorization
         return;
+    } else {
+        Request.defaults.headers.Authorization = `Bearer ${token}`;
     }
-    Request.defaults.headers.Authorization = `Bearer ${token}`;
 }
 
 Request.interceptors.response.use(response => response, error => {
-    if(error.response.status === 401) {
+    console.log(error.response);
+    if(error.response.status === 401 && error.response.config.url !== '/auth/me' && error.response.config.url !== '/auth/logout') {
         delete error.response.config.headers.Authorization
         setAuthToken(null);
         return Request(error.response.config);
-    } 
-    return error;
+    } else {
+        return error;
+    }
 });
 
 const init = async (payload) => {
