@@ -31,16 +31,6 @@ const setAuthToken = (token) => {
     }
 }
 
-Request.interceptors.response.use(response => response, error => {
-    if(error.response.status === 401 && error.response.config.url !== '/auth/me' && error.response.config.url !== '/auth/logout') {
-        delete error.response.config.headers.Authorization
-        setAuthToken(null);
-        return Request(error.response.config);
-    } else {
-        return error;
-    }
-});
-
 const init = async (payload) => {
 
     if (payload && payload.xApiKey && payload.tenant) {
