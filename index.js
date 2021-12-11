@@ -18,6 +18,7 @@ const Review = RequestFactory.get('review')
 const Page = RequestFactory.get('page')
 const Payment = RequestFactory.get('payment')
 const Notification = RequestFactory.get('notification')
+const Home = RequestFactory.get('home')
 
 const setApiKey = (key) => {
     Request.defaults.headers['x-api-key'] = key;
@@ -77,5 +78,6 @@ module.exports = {
     Review,
     Page,
     Payment,
-    Notification
+    Notification,
+    Home
 }

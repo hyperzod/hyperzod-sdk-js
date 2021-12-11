@@ -15,6 +15,7 @@ const Review = require('./API/Review/Review');
 const Page = require('./API/Page/Page');
 const Payment = require('./API/Payment/Payment');
 const Notification = require('./API/Notification/Notification');
+const Home = require('./API/Home/Home');
 
 const repositories = {
     global: Global,
@@ -33,7 +34,8 @@ const repositories = {
     review: Review,
     page: Page,
     payment: Payment,
-    notification: Notification
+    notification: Notification,
+    home: Home
 }
 
 const RequestFactory = {
