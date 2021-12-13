@@ -33,6 +33,19 @@ const setAuthToken = (token) => {
     }
 }
 
+const boot = async (host) => {
+    Request.defaults.headers['x-domain'] = host;
+
+    const resp = await Tenant.getBootSettings()
+
+    if (resp.data.success) {
+        // Set Api Key for Tenant
+        setApiKey(resp.data.data.api_key)
+    }
+
+    return resp;
+}
+
 const init = async (payload) => {
 
     if (payload && payload.xApiKey && payload.tenant) {
@@ -61,6 +74,7 @@ const init = async (payload) => {
 
 
 module.exports = {
+    boot,
     init,
     setAuthToken,
     Global,
