@@ -41,6 +41,7 @@ const boot = async (host) => {
     if (resp.data.success) {
         // Set Api Key for Tenant
         setApiKey(resp.data.data.api_key)
+        delete Request.defaults.headers['x-domain']
     }
 
     return resp;
