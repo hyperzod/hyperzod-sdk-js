@@ -27,6 +27,7 @@ module.exports = {
 
     // List Merchant Categories
     listMerchantCategories(payload) {
+        payload.status = true;
         const url = `/merchant/merchant-categories/list`
         return Request.get(`${url}`, { params: { ...payload }})
     },

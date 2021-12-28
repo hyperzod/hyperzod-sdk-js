@@ -1,5 +1,5 @@
 const axios = require('axios')
-const axiosRetry = require('axios-retry')
+// const axiosRetry = require('axios-retry')
 
 // Get Base URL
 const baseURL = 'https://api.hyperzod.dev';
@@ -17,7 +17,7 @@ const API = axios.create({
   headers: { 'Content-Type': 'application/json'}
 });
 
-axiosRetry(API, { retries: 3 });
+// axiosRetry(API, { retries: 3 });
 
 module.exports = API
 
