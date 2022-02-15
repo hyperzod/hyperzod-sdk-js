@@ -8,9 +8,9 @@ module.exports = {
     },
 
     //fetch Orders 
-    getOrders(payload, page) {
+    getOrders(payload) {
         const url = `/store/v1/order/getOrdersByUserId`
-        return Request.post(`${url}`, payload, { params: { ...page }})
+        return Request.get(`${url}`, { params: { ...payload }})
     },
 
     //fetch Orders
