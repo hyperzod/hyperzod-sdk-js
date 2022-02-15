@@ -3,7 +3,7 @@ const Request = require('../../Request');
 module.exports = {
     // Review Merchant
     reviewMerchant(payload) {
-        const url = `/review/create`
+        const url = `/store/v1/review`
         return Request.post(`${url}`, payload )
     },
 }

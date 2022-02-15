@@ -4,7 +4,7 @@ module.exports = {
     // Get Search
     
     getSearch(payload) {
-        const url = `/search/search`
+        const url = `/store/v1/search`
 
         return Request.get(`${url}`, { params: { ...payload }});
     },

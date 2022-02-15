@@ -3,43 +3,43 @@ const Request = require('../../Request');
 module.exports = {
     // Update Cart
     updateCart(payload) {
-        const url = `/cart/add-to-cart`
+        const url = `/store/v1/cart`
         return Request.post(`${url}`, payload)
     },
 
     // Delete Cart
     deleteCart(payload) {
-        const url = `/cart/delete-cart`
-        return Request.post(`${url}`, payload)
+        const url = `/store/v1/cart`
+        return Request.delete(`${url}`, payload)
     },
 
     // Apply Coupon
     applyCoupon(payload) {
-        const url = `/cart/apply-coupon`
+        const url = `/store/v1/cart/coupon/apply`
         return Request.post(`${url}`, payload)
     },
 
     // Remove Coupon
     removeCoupon(payload) {
-        const url = `/cart/remove-coupon`
+        const url = `/store/v1/cart/coupon/remove`
         return Request.post(`${url}`, payload)
     },
 
     // Fetch Cart
     getCart(payload) {
-        const url = `/cart/list`
+        const url = `/store/v1/cart`
         return Request.get(`${url}`, { params: { ...payload }})
     },
 
     // Validate Cart
     validateCart(payload) {
-        const url = `/cart/validate-cart`
-        return Request.post(`${url}`, payload)
+        const url = `/store/v1/cart/validate`
+        return Request.get(`${url}`, { params: { ...payload }})
     },
 
     // Validate Product
     validateProduct(payload) {
-        const url = `/cart/validate-product`
+        const url = `/store/v1/cart/validate/product`
         return Request.post(`${url}`, payload)
     },
 }

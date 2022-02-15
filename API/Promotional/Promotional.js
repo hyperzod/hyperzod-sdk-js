@@ -3,13 +3,13 @@ const Request = require('../../Request');
 module.exports = {
     // List Banners
     listBanners(payload) {
-        const url = `/promotional/banners/list`
+        const url = `/store/v1/promotional/banners`
         return Request.get(`${url}`, { params: { ...payload }})
     },
 
     // List Coupons
     listCoupons(payload) {
-        const url = `/promotional/coupons/list`
+        const url = `/store/v1/promotional/coupons`
         return Request.get(`${url}`, { params: { ...payload }})
     },
 }

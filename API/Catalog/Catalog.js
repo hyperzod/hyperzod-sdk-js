@@ -3,43 +3,43 @@ const Request = require('../../Request');
 module.exports = {
     // List Product Tags
     listProductTags(payload) {
-        const url = `/catalog/product-tags/list`
+        const url = `/store/v1/catalog/productTags`
         return Request.get(`${url}`, { params: { ...payload }})
     },
 
     // List Product Labels
     listProductLabels(payload) {
-        const url = `/catalog/product-label/list`
+        const url = `/store/v1/catalog/productLabels`
         return Request.get(`${url}`, { params: { ...payload }})
     },
 
     // List Product Categories
     listProductCategories(payload) {
-        const url = `/catalog/product-category/list`
+        const url = `/store/v1/catalog/productCategories`
         return Request.get(`${url}`, { params: { ...payload }})
     },
 
     // Get Product Category
     getProductCategory(payload) {
-        const url = `/catalog/product-category/view`
+        const url = `/store/v1/catalog/productCategories/getById`
         return Request.get(`${url}`, { params: { ...payload }})
     },
 
     // List Prducts
     listProducts(payload, page) {
-        const url = `/catalog/product/list?page=${page}`
+        const url = `/store/v1/catalog/products?page=${page}`
         return Request.get(`${url}`, { params: { ...payload }})
     },
 
     // Get Product
     getProduct(payload) {
-        const url = `/catalog/product/view`
+        const url = `/store/v1/catalog/product/getById`
         return Request.get(`${url}`, { params: { ...payload }})
     },
 
     // Search Product
     searchProduct(payload) {
-        const url = `/catalog/search`
+        const url = `/store/v1/catalog/search`
         return Request.get(`${url}`, { params: { ...payload }})
     },
 }

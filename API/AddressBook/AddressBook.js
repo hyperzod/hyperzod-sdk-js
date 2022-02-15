@@ -3,31 +3,31 @@ const Request = require('../../Request');
 module.exports = {
     // Create Address
     createAddress(payload) {
-        const url = `/address/create`
+        const url = `/store/v1/address`
         return Request.post(`${url}`, payload)
     },
 
     // Update Address
     updateAddress(payload) {
-        const url = `/address/update`
-        return Request.post(`${url}`, payload)
+        const url = `/store/v1/address`
+        return Request.put(`${url}`, payload)
     },
 
     // Delete Address
     deleteAddress(payload) {
-        const url = `/address/delete`
-        return Request.post(`${url}`, payload)
+        const url = `/store/v1/address`
+        return Request.delete(`${url}`, payload)
     },
 
     // Get Address
     getAddress(payload) {
-        const url = `/address/fetch`
+        const url = `/store/v1/address/getByAddressId`
         return Request.get(`${url}`, { params: { ...payload }})
     },
 
     // List Addresses
     listAddresses(payload) {
-        const url = `/address/list`
+        const url = `/store/v1/address`
         return Request.get(`${url}`, { params: { ...payload }})
     },
 }
