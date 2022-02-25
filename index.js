@@ -33,10 +33,10 @@ const setAuthToken = (token) => {
     }
 }
 
-const boot = async (host) => {
+const boot = async (host, payload) => {
     Request.defaults.headers['x-domain'] = host;
 
-    const resp = await Tenant.getBootSettings()
+    const resp = await Tenant.getBootSettings(payload)
 
     if (resp.data.success) {
         // Set Api Key for Tenant
