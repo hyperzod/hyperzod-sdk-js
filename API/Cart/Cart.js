@@ -10,7 +10,7 @@ module.exports = {
     // Delete Cart
     deleteCart(payload) {
         const url = `/store/v1/cart`
-        return Request.delete(`${url}`, payload)
+        return Request.delete(`${url}`, { params: { ...payload }})
     },
 
     // Apply Coupon

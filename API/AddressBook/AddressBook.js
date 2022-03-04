@@ -15,8 +15,9 @@ module.exports = {
 
     // Delete Address
     deleteAddress(payload) {
+        console.log(payload);
         const url = `/store/v1/address`
-        return Request.delete(`${url}`, payload)
+        return Request.delete(`${url}`, { params: { ...payload }})
     },
 
     // Get Address
