@@ -20,9 +20,6 @@ const Payment = RequestFactory.get('payment')
 const Notification = RequestFactory.get('notification')
 const Home = RequestFactory.get('home')
 
-const setApiKey = (key) => {
-    Request.defaults.headers['x-api-key'] = key;
-}
 
 const setAuthToken = (token) => {
     if(token === null) {
@@ -34,15 +31,9 @@ const setAuthToken = (token) => {
 }
 
 const boot = async (host, payload) => {
-    Request.defaults.headers['x-domain'] = host;
+    Request.defaults.headers['X-Tenant'] = host;
 
     const resp = await Tenant.getBootSettings(payload)
-
-    if (resp.data.success) {
-        // Set Api Key for Tenant
-        setApiKey(resp.data.data.api_key)
-        delete Request.defaults.headers['x-domain']
-    }
 
     return resp;
 }
@@ -50,23 +41,11 @@ const boot = async (host, payload) => {
 const init = async (payload) => {
 
     if (payload && payload.xApiKey && payload.tenant) {
-        // Set Api Key for Tenant
-        setApiKey(payload.xApiKey)
         return { tenant_id: payload.tenant }
     }
     if (!payload.tenant && !payload.xApiKey) {
         // Get Tenant From Domain
         const tenantResp = await Global.getTenantByDomain({ domain: 'www.google.com' })
-        if (tenantResp.data.success) {
-            // Set Tenant Data
-            const tenantData = tenantResp.data.data
-            // Get API Key from Tenant
-            const apiKey = await Global.getApiKeyByTenant(tenantData)
-            if (apiKey.data.success) {
-                // Set Api Key for Tenant
-                setApiKey(apiKey.data.data.api_key)
-            }
-        }
 
         return tenantResp
     }

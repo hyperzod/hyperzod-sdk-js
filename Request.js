@@ -2,7 +2,7 @@ const axios = require('axios')
 // const axiosRetry = require('axios-retry')
 
 // Get Base URL
-const baseURL = 'https://api.hyperzod.dev';
+const baseURL = 'https://api-dev.hyperzod.dev';
 
 // const getAuthToken = () => {
 //     const user = JSON.parse(window.localStorage.getItem('loggedInUser'))
