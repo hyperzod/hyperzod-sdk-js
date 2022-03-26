@@ -1,5 +1,6 @@
 const Request = require('./Request')
 const { RequestFactory } = require('./RequestFactory')
+const {v4} = require('uuid')
 
 // Modules To Import
 const Global = RequestFactory.get('global')
@@ -19,6 +20,10 @@ const Page = RequestFactory.get('page')
 const Payment = RequestFactory.get('payment')
 const Notification = RequestFactory.get('notification')
 const Home = RequestFactory.get('home')
+
+let myuuid = v4();
+
+Request.defaults.headers['X-Apm-Transaction-Id'] = myuuid;
 
 
 const setAuthToken = (token) => {
