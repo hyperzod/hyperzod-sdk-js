@@ -23,6 +23,7 @@ const Home = RequestFactory.get('home')
 
 let myuuid = v4();
 
+localStorage.setItem('UUID', myuuid);
 Request.defaults.headers['X-Apm-Transaction-Id'] = myuuid;
 
 
