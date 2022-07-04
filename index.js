@@ -1,6 +1,6 @@
 const Request = require('./Request')
 const { RequestFactory } = require('./RequestFactory')
-const {v4} = require('uuid')
+const { v4 } = require('uuid')
 
 // Modules To Import
 const Global = RequestFactory.get('global')
@@ -21,6 +21,8 @@ const Payment = RequestFactory.get('payment')
 const Notification = RequestFactory.get('notification')
 const Home = RequestFactory.get('home')
 
+window.HYPERZOD_API_ENV = 'dev'; // dev, production
+
 let myuuid = v4();
 
 localStorage.setItem('UUID', myuuid);
@@ -28,7 +30,7 @@ Request.defaults.headers['X-Apm-Transaction-Id'] = myuuid;
 
 
 const setAuthToken = (token) => {
-    if(token === null) {
+    if (token === null) {
         delete Request.defaults.headers.Authorization
         return;
     } else {
