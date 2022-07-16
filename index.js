@@ -21,7 +21,7 @@ const Payment = RequestFactory.get('payment')
 const Notification = RequestFactory.get('notification')
 const Home = RequestFactory.get('home')
 
-window.HYPERZOD_API_ENV = 'dev'; // dev, production
+window.HYPERZOD_API_ENV = 'production'; // dev, production
 
 let myuuid = v4();
 

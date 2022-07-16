@@ -7,9 +7,22 @@ module.exports = {
         return Request.post(`${url}`, payload)
     },
 
+    // Generate OTP
+    otp(payload) {
+        const url = `/auth/v1/user/otp/generate`
+        return Request.post(`${url}`, payload)
+    },
+
     // Verify User via OTP
-    verifyPhone(payload) {
+    otpVerify(payload) {
         const url = `/auth/v1/user/otp/verify`
+        return Request.post(`${url}`, payload)
+    },
+
+    //Signup User
+    signup(payload) {
+        console.log(payload)
+        const url = `/auth/v1/user/register`
         return Request.post(`${url}`, payload)
     },
 
