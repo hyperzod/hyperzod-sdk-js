@@ -19,6 +19,12 @@ module.exports = {
         return Request.post(`${url}`, payload)
     },
 
+    // Chnage password
+    changePassword(payload) {
+        const url = `/auth/v1/user/resetPassword`
+        return Request.post(`${url}`, payload)
+    },
+
     //Signup User
     signup(payload) {
         console.log(payload)
