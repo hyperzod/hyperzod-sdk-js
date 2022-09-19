@@ -27,7 +27,6 @@ module.exports = {
 
     //Signup User
     signup(payload) {
-        console.log(payload)
         const url = `/auth/v1/user/register`
         return Request.post(`${url}`, payload)
     },
@@ -48,5 +47,11 @@ module.exports = {
     logout(payload) {
         const url = `/auth/v1/logout`
         return Request.post(`${url}`, payload)
+    },
+
+    // Delete Account
+    deleteAccount(payload) {
+        const url = `/auth/v1/user/${payload}`
+        return Request.delete(`${url}`)
     }
 }
