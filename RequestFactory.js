@@ -15,6 +15,7 @@ const Review = require('./API/Review/Review');
 const Page = require('./API/Page/Page');
 const Payment = require('./API/Payment/Payment');
 const Notification = require('./API/Notification/Notification');
+const Upload = require('./API/Upload/Upload');
 const Home = require('./API/Home/Home');
 
 const repositories = {
@@ -35,6 +36,7 @@ const repositories = {
     page: Page,
     payment: Payment,
     notification: Notification,
+    upload: Upload,
     home: Home
 }
 
