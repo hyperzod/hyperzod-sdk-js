@@ -1,6 +1,12 @@
 const Request = require('../../Request');
 
 module.exports = {
+    // Login intent
+    loginIntent(payload) {
+        const url = `/auth/v1/user/login/intent`
+        return Request.post(`${url}`, payload)
+    },
+
     // Login User
     login(payload) {
         const url = `/auth/v1/user/login`
