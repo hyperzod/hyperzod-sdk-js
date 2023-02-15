@@ -15,7 +15,7 @@ module.exports = {
 
     // Generate OTP
     otp(payload) {
-        const url = `/auth/v1/user/otp/generate`
+        const url = `/auth/v1/user/otp/generate/login`
         return Request.post(`${url}`, payload)
     },
 
