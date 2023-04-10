@@ -59,5 +59,11 @@ module.exports = {
     deleteAccount(payload) {
         const url = `/auth/v1/user/${payload}`
         return Request.delete(`${url}`)
+    },
+
+    // Delete Account
+    forgotPassword(payload) {
+        const url = `/auth/v1/user/forgotPassword`
+        return Request.post(`${url}`, payload)
     }
 }
