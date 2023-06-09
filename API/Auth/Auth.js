@@ -55,6 +55,12 @@ module.exports = {
         return Request.post(`${url}`, payload)
     },
 
+    //Verify Token
+    verifyToken(payload) {
+        const url = `/auth/v1/token/verify`
+        return Request.post(`${url}`, payload)
+    },
+
     // Delete Account
     deleteAccount(payload) {
         const url = `/auth/v1/user/${payload}`
