@@ -21,6 +21,7 @@ const Payment = RequestFactory.get('payment')
 const Notification = RequestFactory.get('notification')
 const Upload = RequestFactory.get('upload')
 const Home = RequestFactory.get('home')
+const PageBuilder = RequestFactory.get('pageBuilder')
 
 window.HYPERZOD_API_ENV = 'dev'; // dev, production
 
@@ -83,5 +84,6 @@ module.exports = {
     Payment,
     Notification,
     Upload,
-    Home
+    Home,
+    PageBuilder
 }
