@@ -4,7 +4,7 @@ module.exports = {
   // Find Nearby Merchants
   findNearByMerchants(payload) {
     const url = `/store/v1/merchant/nearby`;
-    return Request.post(`${url}`, payload);
+    return Request.post(`${url}`, payload.data, {headers: payload.headers});
   },
 
   // List Featured Merchants
@@ -22,7 +22,7 @@ module.exports = {
   // Get Merchant Menu
   getMerchantMenu(payload) {
     const url = `/store/v1/merchant/menu`;
-    return Request.get(`${url}`, { params: { ...payload } });
+    return Request.get(`${url}`, { params: { ...payload.data }, headers: payload.headers });
   },
 
   // Get Nearest Merchant
