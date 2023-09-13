@@ -25,7 +25,19 @@ module.exports = {
         return Request.get(`${url}`, { params: { ...payload }})
     },
 
-    // List Prducts
+    // Product by category
+    productsByCategory(payload) {
+        const url = `/store/v1/catalog/productCategories/products`;
+        return Request.get(`${url}`, { params: { ...payload } });
+    },
+  
+    // Paginated products categories
+    categoriesList(payload) {
+        const url = `/store/v1/catalog/productCategories/paginate`;
+        return Request.get(`${url}`, { params: { ...payload } });
+    },
+
+    // List Products
     listProducts(payload, page) {
         const url = `/store/v1/catalog/products?page=${page}`
         return Request.get(`${url}`, { params: { ...payload }})
