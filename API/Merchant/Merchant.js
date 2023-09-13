@@ -37,4 +37,28 @@ module.exports = {
     const url = `/store/v1/merchant/categories`;
     return Request.get(`${url}`, { params: { ...payload } });
   },
+
+  // New merchant menu
+  getNewMerchantMenu(payload) {
+    const url = `/store/v1/merchant/menu/test`;
+    return Request.get(`${url}`, { params: { ...payload.data }, headers: payload.headers });
+  },
+
+  // Is merchant delivering
+  isMerchantDelivering(payload) {
+    const url = `/store/v1/merchant/check-delivering`;
+    return Request.post(`${url}`, payload);
+  },
+
+  // Product by category
+  productsByCategory(payload) {
+    const url = `/store/v1/catalog/productCategories/products`;
+    return Request.get(`${url}`, { params: { ...payload } });
+  },
+  
+  // Merchant products catrgories
+  categoriesList(payload) {
+    const url = `/product-category/paginate`;
+    return Request.get(`${url}`, { params: { ...payload } });
+  },
 };
