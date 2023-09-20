@@ -25,10 +25,17 @@ const PageBuilder = RequestFactory.get('pageBuilder')
 
 window.HYPERZOD_API_ENV = 'dev'; // dev, production
 
-let myuuid = v4();
+const myuuid = v4();
 
-localStorage.setItem('UUID', myuuid);
 Request.defaults.headers['X-Apm-Transaction-Id'] = myuuid;
+
+const getUUID = () => {
+    if(myuuid) {
+        return myuuid
+    } else {
+        return null;
+    }
+}
 
 
 const setAuthToken = (token) => {
@@ -85,5 +92,6 @@ module.exports = {
     Notification,
     Upload,
     Home,
-    PageBuilder
+    PageBuilder,
+    getUUID,
 }
