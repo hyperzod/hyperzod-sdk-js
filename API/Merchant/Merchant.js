@@ -49,19 +49,4 @@ module.exports = {
     const url = `/store/v1/merchant/check-delivering`;
     return Request.post(`${url}`, payload);
   },
-
-  getProduct(payload) {
-    const url = `/store/v1/search/product/view`;
-    return Request.get(`${url}`, { params: { ...payload } });
-  },
-
-  searchMerchant(payload) {
-    const url = `/store/v1/search/merchant/products`;
-    return Request.get(`${url}`, { params: { ...payload } });
-  },
-  
-  getProductLabels(payload) {
-    const url = `/store/v1/search/product-label/list`;
-    return Request.get(`${url}`, { params: { ...payload } });
-  },
 };

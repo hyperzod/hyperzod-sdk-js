@@ -25,16 +25,10 @@ module.exports = {
         return Request.get(`${url}`, { params: { ...payload }})
     },
 
-    // Product by category
-    productsByCategory(payload) {
-        const url = `/store/v1/search/product-category/products`;
-        return Request.get(`${url}`, { params: { ...payload } });
-    },
-  
-    // Paginated products categories
-    categoriesList(payload) {
-        const url = `/store/v1/search/product-category/list`;
-        return Request.get(`${url}`, { params: { ...payload } });
+    // Search Product
+    searchProduct(payload) {
+        const url = `/store/v1/catalog/search`
+        return Request.get(`${url}`, { params: { ...payload }})
     },
 
     // List Products
@@ -49,9 +43,4 @@ module.exports = {
         return Request.get(`${url}`, { params: { ...payload }})
     },
 
-    // Search Product
-    searchProduct(payload) {
-        const url = `/store/v1/catalog/search`
-        return Request.get(`${url}`, { params: { ...payload }})
-    },
 }
