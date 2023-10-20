@@ -27,13 +27,13 @@ module.exports = {
 
     // Product by category
     productsByCategory(payload) {
-        const url = `/store/v1/catalog/productCategories/products`;
+        const url = `/store/v1/search/product-category/products`;
         return Request.get(`${url}`, { params: { ...payload } });
     },
   
     // Paginated products categories
     categoriesList(payload) {
-        const url = `/store/v1/catalog/productCategories/paginate`;
+        const url = `/store/v1/search/product-category/list`;
         return Request.get(`${url}`, { params: { ...payload } });
     },
 
