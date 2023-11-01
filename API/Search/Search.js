@@ -34,4 +34,9 @@ module.exports = {
       const url = `/store/v1/search/product-label/list`;
       return Request.get(`${url}`, { params: { ...payload } });
     },
+
+    getMerchantData(payload) {
+      const url = `/store/v1/search/merchant/view`;
+      return Request.get(`${url}`, { params: { ...payload } });
+    },
 }
