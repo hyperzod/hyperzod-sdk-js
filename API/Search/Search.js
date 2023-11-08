@@ -39,4 +39,10 @@ module.exports = {
       const url = `/store/v1/search/merchant/view`;
       return Request.get(`${url}`, { params: { ...payload } });
     },
+
+    // Find Nearby Merchants
+    findNearByMerchants(payload) {
+      const url = `/store/v1/search/merchant/nearby`;
+      return Request.post(`${url}`, payload.data, {headers: payload.headers});
+    },
 }
