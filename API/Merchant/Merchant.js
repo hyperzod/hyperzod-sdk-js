@@ -47,6 +47,6 @@ module.exports = {
   // Is merchant delivering
   isMerchantDelivering(payload) {
     const url = `/store/v1/merchant/check-delivering`;
-    return Request.post(`${url}`, payload);
+    return Request.post(`${url}`, payload.data, {headers: payload.headers});
   },
 };
