@@ -18,6 +18,7 @@ const Notification = require('./API/Notification/Notification');
 const Upload = require('./API/Upload/Upload');
 const Home = require('./API/Home/Home');
 const PageBuilder = require('./API/PageBuilder/PageBuilder');
+const FormBuilder = require('./API/FormBuilder/FormBuilder');
 
 const repositories = {
     global: Global,
@@ -39,7 +40,8 @@ const repositories = {
     notification: Notification,
     upload: Upload,
     home: Home,
-    pageBuilder: PageBuilder
+    pageBuilder: PageBuilder,
+    formBuilder: FormBuilder
 }
 
 const RequestFactory = {

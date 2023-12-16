@@ -22,6 +22,7 @@ const Notification = RequestFactory.get('notification')
 const Upload = RequestFactory.get('upload')
 const Home = RequestFactory.get('home')
 const PageBuilder = RequestFactory.get('pageBuilder')
+const FormBuilder = RequestFactory.get('formBuilder')
 
 window.HYPERZOD_API_ENV = 'dev'; // dev, production
 
@@ -94,4 +95,5 @@ module.exports = {
     Home,
     PageBuilder,
     getUUID,
+    FormBuilder,
 }

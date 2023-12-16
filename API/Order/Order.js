@@ -25,9 +25,4 @@ module.exports = {
         return Request.get(`${url}`, { params: { ...payload }})
     },
 
-    //fetch custom order form
-    getCustomOrderForm(type, payload) {
-        const url = `/store/v1/order/custom-forms/${type}`
-        return Request.get(`${url}`, { params: { ...payload }})
-    },
 }
