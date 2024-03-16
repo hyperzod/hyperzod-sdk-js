@@ -12,4 +12,10 @@ module.exports = {
         const url = `/store/v1/promotional/coupons`
         return Request.get(`${url}`, { params: { ...payload }})
     },
+
+    listAvailableCoupons(payload) {
+        const url = `/store/v1/promotional/coupons/available`
+        return Request.get(`${url}`, { params: { ...payload }})
+    },
+
 }
