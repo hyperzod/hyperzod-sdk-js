@@ -61,6 +61,12 @@ module.exports = {
         return Request.post(`${url}`, payload)
     },
 
+    //Chnage Mobile Number
+    updateMobile(payload) {
+        const url = `/auth/v1/user/updateMobileViaToken`
+        return Request.post(`${url}`, payload)
+    },
+
     // Delete Account
     deleteAccount(payload) {
         const url = `/auth/v1/user/${payload}`
