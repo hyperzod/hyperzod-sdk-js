@@ -43,4 +43,9 @@ module.exports = {
         return Request.get(`${url}`, { params: { ...payload }})
     },
 
+    // Get products list by ids
+    getProductsByIds(payload) {
+        const url = `/store/v1/catalog/products/listByIds`
+        return Request.get(`${url}`, {params: { ...payload }})
+    }
 }
