@@ -33,7 +33,6 @@ module.exports = {
 
   // Fetch Carts
   getCarts(payload) {
-    console.log(payload);
     const url = `/store/v1/cart/list-by-ids`;
     return Request.get(`${url}`, { params: { ...payload } });
   },
