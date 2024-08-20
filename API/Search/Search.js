@@ -20,6 +20,11 @@ module.exports = {
         return Request.get(`${url}`, { params: { ...payload } });
     },
 
+    getProductCategoriesByIds(payload) {
+        const url = `/store/v1/search/product-category/list-by-ids`;
+        return Request.get(`${url}`, { params: { ...payload } });
+    },
+
     getProduct(payload) {
         const url = `/store/v1/search/product/view`;
         return Request.get(`${url}`, { params: { ...payload } });
