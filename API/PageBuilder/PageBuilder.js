@@ -6,6 +6,7 @@ module.exports = {
         const url = `/public/v1/page-builder/client/page/merchant`
         return Request.get(`${url}`, { params: { ...payload } })
     },
+    // Get Section
     getSection(payload) {
         const url = `/public/v1/page-builder/client/section`
         return Request.get(`${url}`, { params: { ...payload } })
