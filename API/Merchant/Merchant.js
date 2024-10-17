@@ -7,6 +7,12 @@ module.exports = {
     return Request.post(`${url}`, payload.data, {headers: payload.headers});
   },
 
+  // List merchants by id
+  listMerchantsById(payload) {
+    const url = `/store/v1/merchant/listByIds`;
+    return Request.get(`${url}`, { params: { ...payload } });
+  },
+
   // List Featured Merchants
   listFeaturedMerchants(payload) {
     const url = `/store/v1/merchant/merchant-featured/list`;
