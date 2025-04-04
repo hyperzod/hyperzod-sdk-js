@@ -19,6 +19,7 @@ const Upload = require('./API/Upload/Upload');
 const Home = require('./API/Home/Home');
 const PageBuilder = require('./API/PageBuilder/PageBuilder');
 const FormBuilder = require('./API/FormBuilder/FormBuilder');
+const Stats = require('./API/Stats/Stats');
 
 const repositories = {
     global: Global,
@@ -41,7 +42,8 @@ const repositories = {
     upload: Upload,
     home: Home,
     pageBuilder: PageBuilder,
-    formBuilder: FormBuilder
+    formBuilder: FormBuilder,
+    stats: Stats
 }
 
 const RequestFactory = {
