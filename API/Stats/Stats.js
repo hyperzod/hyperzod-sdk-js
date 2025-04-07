@@ -3,8 +3,8 @@ const Request = require('../../Request');
 
 module.exports = {
     // Check User is in Segment
-    checkUserInSegment: function(data) {
+    checkUserInSegment: function(payload) {
         const url = `/admin/v1/stats/segments/checkUser`
-        return Request.post(`${url}`, data);
+        return Request.get(`${url}`, { params: { ...payload } });
     }
 }
