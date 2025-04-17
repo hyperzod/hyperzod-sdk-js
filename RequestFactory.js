@@ -20,7 +20,7 @@ const Home = require('./API/Home/Home');
 const PageBuilder = require('./API/PageBuilder/PageBuilder');
 const FormBuilder = require('./API/FormBuilder/FormBuilder');
 const Stats = require('./API/Stats/Stats');
-
+const Recommendation = require('./API/Recommendation/Recommendation');
 const repositories = {
     global: Global,
     tenant: Tenant,
@@ -43,7 +43,8 @@ const repositories = {
     home: Home,
     pageBuilder: PageBuilder,
     formBuilder: FormBuilder,
-    stats: Stats
+    stats: Stats,
+    recommendation: Recommendation
 }
 
 const RequestFactory = {
