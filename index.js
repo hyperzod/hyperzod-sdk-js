@@ -24,7 +24,7 @@ const Home = RequestFactory.get('home')
 const PageBuilder = RequestFactory.get('pageBuilder')
 const FormBuilder = RequestFactory.get('formBuilder')
 const Stats = RequestFactory.get('stats')
-
+const Recommendation = RequestFactory.get('recommendation')
 window.HYPERZOD_API_ENV = 'dev'; // dev, production
 
 const myuuid = v4();
@@ -97,5 +97,6 @@ module.exports = {
     PageBuilder,
     getUUID,
     FormBuilder,
-    Stats
+    Stats,
+    Recommendation
 }
