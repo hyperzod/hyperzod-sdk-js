@@ -12,4 +12,9 @@ module.exports = {
     return Request.post(`${url}`, payload)
 },
 
+  recommendProductsForUser(payload) {
+    const url = `/store/v1/recommend/products`
+    return Request.post(`${url}`, payload)
+},
+
 };
