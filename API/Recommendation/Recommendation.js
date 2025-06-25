@@ -4,7 +4,7 @@ module.exports = {
 
   recommendProductsWithinMerchant(payload) {
     const url = `/store/v1/recommend/products/merchant`
-    return Request.post(`${url}`, payload.data, {headers: payload.headers})
+    return Request.post(`${url}`, payload)
 },
 
   recommendMerchantsForUser(payload) {
