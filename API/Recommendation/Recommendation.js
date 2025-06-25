@@ -9,7 +9,7 @@ module.exports = {
 
   recommendMerchantsForUser(payload) {
     const url = `/store/v1/recommend/merchants`
-    return Request.post(`${url}`, payload)
+    return Request.post(`${url}`, payload.data, {headers: payload.headers})
 },
 
   recommendProductsForUser(payload) {
