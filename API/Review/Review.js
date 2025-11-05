@@ -7,8 +7,8 @@ module.exports = {
         return Request.post(`${url}`, payload )
     },
 
-    getTopMerchantReviews(merchant_id) {
+    getTopMerchantReviews(payload) {
         const url = `/store/v1/review/top-merchant-reviews`
-        return Request.get(`${url}`, { params: { merchant_id } })
+        return Request.get(`${url}`, { params: { ...payload } })
     }
 }
