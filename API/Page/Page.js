@@ -1,14 +1,12 @@
-const Request = require('../../Request');
+export default function createPageModule(http) {
+  const base = "/store/v1/page";
+  return {
+    get(params) {
+      return http.get(`${base}`, { params });
+    },
 
-module.exports = {
-    // Get Page
-    getPage(payload) {
-        const url = `/store/v1/page`
-        return Request.get(`${url}`, { params: { ...payload } })
+    list(params) {
+      return http.get(`${base}/list`, { params });
     },
-    // Get Page list
-    getPageList(payload) {
-        const url = `/store/v1/page/list`
-        return Request.get(`${url}`, { params: { ...payload } })
-    },
+  };
 }

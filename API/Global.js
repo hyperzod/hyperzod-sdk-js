@@ -1,15 +1,13 @@
-const Request = require('../Request');
-
-module.exports = {
+export default function createGlobalModule(http) {
+  return {
     // Get Tenant By Domain
-    getTenantByDomain(payload) {
-        const url = `/tenant/getTenantIdByDomain`
-        return Request.get(`${url}`, { params: { ...payload } })
+    getTenantByDomain(params = {}) {
+      return http.get(`/tenant/getTenantIdByDomain`, { params });
     },
 
     // Get API Key By Tenant
-    getApiKeyByTenant(payload) {
-        const url = `/api-key/getApiKeyByTenantId`
-        return Request.get(`${url}`, { params: { ...payload } })
-    }
+    getApiKeyByTenant(params = {}) {
+      return http.get(`/api-key/getApiKeyByTenantId`, { params });
+    },
+  };
 }

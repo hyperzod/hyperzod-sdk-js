@@ -1,81 +1,69 @@
-const Request = require('../../Request');
-
-module.exports = {
+export default function createAuthModule(http) {
+  const base = "/auth/v1";
+  return {
     // Login intent
     loginIntent(payload) {
-        const url = `/auth/v1/user/login/intent`
-        return Request.post(`${url}`, payload)
+      return http.post(`${base}/user/login/intent`, payload);
     },
 
     // Login User
     login(payload) {
-        const url = `/auth/v1/user/login`
-        return Request.post(`${url}`, payload)
+      return http.post(`${base}/user/login`, payload);
     },
 
     // Generate OTP
     otp(payload) {
-        const url = `/auth/v1/user/otp/generate/login`
-        return Request.post(`${url}`, payload)
+      return http.post(`${base}/user/otp/generate/login`, payload);
     },
 
     // Verify User via OTP
     otpVerify(payload) {
-        const url = `/auth/v1/user/otp/verify`
-        return Request.post(`${url}`, payload)
+      return http.post(`${base}/user/otp/verify`, payload);
     },
 
-    // Chnage password
+    // Change password
     changePassword(payload) {
-        const url = `/auth/v1/user/resetPassword`
-        return Request.post(`${url}`, payload)
+      return http.post(`${base}/user/resetPassword`, payload);
     },
 
-    //Signup User
+    // Signup User
     signup(payload) {
-        const url = `/auth/v1/user/register`
-        return Request.post(`${url}`, payload)
+      return http.post(`${base}/user/register`, payload);
     },
 
     // Update User
     updateUser(payload) {
-        const url = `/auth/v1/user/${payload.user_id}`
-        return Request.put(`${url}`, payload)
+      return http.put(`${base}/user/${payload.user_id}`, payload);
     },
 
     // Logged In User
-    getLoggedInUser(payload) {
-        const url = `/auth/v1/me`
-        return Request.get(`${url}`, { params: { ...payload } })
+    getLoggedInUser(params = {}) {
+      return http.get(`${base}/me`, { params });
     },
 
     // Logout User
     logout(payload) {
-        const url = `/auth/v1/logout`
-        return Request.post(`${url}`, payload)
+      return http.post(`${base}/logout`, payload);
     },
 
-    //Verify Token
+    // Verify Token
     verifyToken(payload) {
-        const url = `/auth/v1/token/verify`
-        return Request.post(`${url}`, payload)
+      return http.post(`${base}/token/verify`, payload);
     },
 
-    //Chnage Mobile Number
+    // Change Mobile Number
     updateMobile(payload) {
-        const url = `/auth/v1/user/updateMobileViaToken`
-        return Request.post(`${url}`, payload)
+      return http.post(`${base}/user/updateMobileViaToken`, payload);
     },
 
     // Delete Account
-    deleteAccount(payload) {
-        const url = `/auth/v1/user/${payload}`
-        return Request.delete(`${url}`)
+    deleteAccount(userId) {
+      return http.delete(`${base}/user/${userId}`);
     },
 
-    // Delete Account
+    // Forgot Password
     forgotPassword(payload) {
-        const url = `/auth/v1/user/forgotPassword`
-        return Request.post(`${url}`, payload)
-    }
+      return http.post(`${base}/user/forgotPassword`, payload);
+    },
+  };
 }

@@ -1,51 +1,45 @@
-const Request = require("../../Request");
+export default function createCatalogModule(http) {
+  const base = "/store/v1";
+  return {
+    // List Product Tags
+    listProductTags(params = {}) {
+      return http.get(`${base}/catalog/productTags`, { params });
+    },
 
-module.exports = {
-  // List Product Tags
-  listProductTags(payload) {
-    const url = `/store/v1/catalog/productTags`;
-    return Request.get(`${url}`, { params: { ...payload } });
-  },
+    // List Product Labels
+    listProductLabels(params = {}) {
+      return http.get(`${base}/catalog/productLabels`, { params });
+    },
 
-  // List Product Labels
-  listProductLabels(payload) {
-    const url = `/store/v1/catalog/productLabels`;
-    return Request.get(`${url}`, { params: { ...payload } });
-  },
+    // List Product Categories
+    listProductCategories(params = {}) {
+      return http.get(`${base}/catalog/productCategories`, { params });
+    },
 
-  // List Product Categories
-  listProductCategories(payload) {
-    const url = `/store/v1/catalog/productCategories`;
-    return Request.get(`${url}`, { params: { ...payload } });
-  },
+    // Get Product Category
+    getProductCategory(params = {}) {
+      return http.get(`${base}/catalog/productCategories/getById`, { params });
+    },
 
-  // Get Product Category
-  getProductCategory(payload) {
-    const url = `/store/v1/catalog/productCategories/getById`;
-    return Request.get(`${url}`, { params: { ...payload } });
-  },
+    // Search Product
+    searchProduct(params = {}) {
+      return http.get(`${base}/catalog/search`, { params });
+    },
 
-  // Search Product
-  searchProduct(payload) {
-    const url = `/store/v1/catalog/search`;
-    return Request.get(`${url}`, { params: { ...payload } });
-  },
+    // List Products
+    listProducts(params = {}, page) {
+      const queryParams = page ? { ...params, page } : params;
+      return http.get(`${base}/catalog/products`, { params: queryParams });
+    },
 
-  // List Products
-  listProducts(payload, page) {
-    const url = `/store/v1/catalog/products?page=${page}`;
-    return Request.get(`${url}`, { params: { ...payload } });
-  },
+    // Get Product
+    getProduct(params = {}) {
+      return http.get(`${base}/catalog/products/getById`, { params });
+    },
 
-  // Get Product
-  getProduct(payload) {
-    const url = `/store/v1/catalog/products/getById`;
-    return Request.get(`${url}`, { params: { ...payload } });
-  },
-
-  // Get products list by ids
-  getProductsByIds(payload) {
-    const url = `/store/v1/catalog/products/listByIds`;
-    return Request.get(`${url}`, { params: { ...payload } });
-  },
-};
+    // Get products list by ids
+    getProductsByIds(params = {}) {
+      return http.get(`${base}/catalog/products/listByIds`, { params });
+    },
+  };
+}

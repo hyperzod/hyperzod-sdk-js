@@ -1,23 +1,23 @@
-const Request = require("../../Request");
+export default function createRecommendationModule(http) {
+  const base = "/store/v1/recommend";
+  return {
+    recommendProductsWithinMerchant(payload) {
+      return http.post(`${base}/products/merchant`, payload);
+    },
 
-module.exports = {
-  recommendProductsWithinMerchant(payload) {
-    const url = `/store/v1/recommend/products/merchant`;
-    return Request.post(`${url}`, payload);
-  },
+    recommendMerchantsForUser(payload) {
+      const { data, headers, ...rest } = payload || {};
+      return http.post(`${base}/merchants`, data || rest, {
+        ...(headers && { headers }),
+      });
+    },
 
-  recommendMerchantsForUser(payload) {
-    const url = `/store/v1/recommend/merchants`;
-    return Request.post(`${url}`, payload.data, { headers: payload.headers });
-  },
+    recommendProductsForUser(payload) {
+      return http.post(`${base}/products`, payload);
+    },
 
-  recommendProductsForUser(payload) {
-    const url = `/store/v1/recommend/products`;
-    return Request.post(`${url}`, payload);
-  },
-
-  recommendSimilarItems(payload) {
-    const url = `/store/v1/recommend/similarItems`;
-    return Request.post(`${url}`, payload);
-  },
+    recommendSimilarItems(payload) {
+      return http.post(`${base}/similarItems`, payload);
+    },
+  };
 };

@@ -1,21 +1,19 @@
-const Request = require('../../Request');
-
-module.exports = {
+export default function createPlacesModule(http) {
+  const base = "/store/v1/places";
+  return {
     // Search Places
-    searchPlaces(payload) {
-        const url = `/store/v1/places/search`
-        return Request.get(`${url}`, { params: { ...payload } })
+    searchPlaces(params = {}) {
+      return http.get(`${base}/search`, { params });
     },
 
-    //Featch Place
-    fetchPlace(payload) {
-        const url = `/store/v1/places/getByPlaceId`
-        return Request.get(`${url}`, { params: { ...payload } })
+    // Fetch Place
+    fetchPlace(params = {}) {
+      return http.get(`${base}/getByPlaceId`, { params });
     },
 
     // Reverse Geocode
-    reverseGeocode(payload) {
-        const url = `/store/v1/places/reverseGeocode`
-        return Request.get(`${url}`, { params: { ...payload } })
-    }
+    reverseGeocode(params = {}) {
+      return http.get(`${base}/reverseGeocode`, { params });
+    },
+  };
 }

@@ -1,34 +1,29 @@
-const Request = require('../../Request');
-
-module.exports = {
+export default function createAddressModule(http) {
+  const base = "/store/v1";
+  return {
     // Create Address
     createAddress(payload) {
-        const url = `/store/v1/address`
-        return Request.post(`${url}`, payload)
+      return http.post(`${base}/address`, payload);
     },
 
     // Update Address
     updateAddress(payload) {
-        const url = `/store/v1/address`
-        return Request.put(`${url}`, payload)
+      return http.put(`${base}/address`, payload);
     },
 
     // Delete Address
-    deleteAddress(payload) {
-        console.log(payload);
-        const url = `/store/v1/address`
-        return Request.delete(`${url}`, { params: { ...payload }})
+    deleteAddress(params = {}) {
+      return http.delete(`${base}/address`, { params });
     },
 
     // Get Address
-    getAddress(payload) {
-        const url = `/store/v1/address/getByAddressId`
-        return Request.get(`${url}`, { params: { ...payload }})
+    getAddress(params = {}) {
+      return http.get(`${base}/address/getByAddressId`, { params });
     },
 
     // List Addresses
-    listAddresses(payload) {
-        const url = `/store/v1/address`
-        return Request.get(`${url}`, { params: { ...payload }})
+    listAddresses(params = {}) {
+      return http.get(`${base}/address`, { params });
     },
+  };
 }

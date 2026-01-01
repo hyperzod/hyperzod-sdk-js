@@ -1,15 +1,14 @@
-const Request = require('../../Request');
-
-module.exports = {
+export default function createTenantModule(http) {
+  const base = "/store/v1";
+  return {
     // Get Boot Settings
-    getBootSettings(payload) {
-        const url = `/store/v1/boot`
-        return Request.get(`${url}`, { params: { ...payload } })
+    getBootSettings(params = {}) {
+      return http.get(`${base}/boot`, { params });
     },
 
-    // Is is Serviceable Area
+    // Is Serviceable Area
     isServiceableArea(payload) {
-        const url = `/store/v1/isStoreServiceable`
-        return Request.post(`${url}`, payload)
-    }
+      return http.post(`${base}/isStoreServiceable`, payload);
+    },
+  };
 }

@@ -1,9 +1,8 @@
-const Request = require('../../Request');
-
-module.exports = {
-    //Push Auth 
+export default function createNotificationModule(http) {
+  return {
+    //Push Auth
     pushAuth(payload) {
-        const url = `public/v1/notification/push/token`
-        return Request.post(`${url}`, payload)
+      return http.post(`public/v1/notification/push/token`, payload);
     },
+  };
 }

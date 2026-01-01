@@ -1,102 +1,95 @@
-const Request = require('./Request')
-const { RequestFactory } = require('./RequestFactory')
-const { v4 } = require('uuid')
+import createHttpClient from "./core/HttpClient.js";
+import createUploadClient from "./core/UploadClient.js";
+import { v4 as uuid } from "uuid";
 
-// Modules To Import
-const Global = RequestFactory.get('global')
-const Tenant = RequestFactory.get('tenant')
-const Places = RequestFactory.get('places')
-const Auth = RequestFactory.get('auth')
-const Merchant = RequestFactory.get('merchant')
-const Catalog = RequestFactory.get('catalog')
-const Promotional = RequestFactory.get('promotional')
-const AddressBook = RequestFactory.get('addressBook')
-const Cart = RequestFactory.get('cart')
-const Wallet = RequestFactory.get('wallet')
-const Search = RequestFactory.get('search')
-const Order = RequestFactory.get('order')
-const Review = RequestFactory.get('review')
-const Page = RequestFactory.get('page')
-const Payment = RequestFactory.get('payment')
-const Notification = RequestFactory.get('notification')
-const Upload = RequestFactory.get('upload')
-const Home = RequestFactory.get('home')
-const PageBuilder = RequestFactory.get('pageBuilder')
-const FormBuilder = RequestFactory.get('formBuilder')
-const Stats = RequestFactory.get('stats')
-const Recommendation = RequestFactory.get('recommendation')
-window.HYPERZOD_API_ENV = 'dev'; // dev, production
+import createAddressModule from "./API/AddressBook/AddressBook.js";
+import createAuthModule from "./API/Auth/Auth.js";
+import createCartModule from "./API/Cart/Cart.js";
+import createCatalogModule from "./API/Catalog/Catalog.js";
+import createFormBuilderModule from "./API/FormBuilder/FormBuilder.js";
+import createGlobalModule from "./API/Global.js";
+import createHomeModule from "./API/Home/Home.js";
+import createMerchantModule from "./API/Merchant/Merchant.js";
+import createNotificationModule from "./API/Notification/Notification.js";
+import createOrderModule from "./API/Order/Order.js";
+import createPageModule from "./API/Page/Page.js";
+import createPageBuilderModule from "./API/PageBuilder/PageBuilder.js";
+import createPaymentModule from "./API/Payment/Payment.js";
+import createPlacesModule from "./API/Places/Places.js";
+import createPromotionalModule from "./API/Promotional/Promotional.js";
+import createRecommendationModule from "./API/Recommendation/Recommendation.js";
+import createReviewModule from "./API/Review/Review.js";
+import createSearchModule from "./API/Search/Search.js";
+import createStatsModule from "./API/Stats/Stats.js";
+import createTenantModule from "./API/Tenant/Tenant.js";
+import createUploadModule from "./API/Upload/Upload.js";
+import createWalletModule from "./API/Wallet/Wallet.js";
 
-const myuuid = v4();
+export default function createHyperzodSDK(config = {}) {
+  const requestId = uuid();
+  let authToken = null;
 
-Request.defaults.headers['X-Apm-Transaction-Id'] = myuuid;
+  const {
+    env,
+    apiVariant,
+    tenant,
+    timeout,
+    uploadTimeout,
+    customHeaders,
+    uploadCustomHeaders,
+    ...restConfig
+  } = config;
 
-const getUUID = () => {
-    if(myuuid) {
-        return myuuid
-    } else {
-        return null;
-    }
-}
+  const http = createHttpClient({
+    env,
+    apiVariant,
+    tenant,
+    timeout,
+    customHeaders,
+    requestId,
+    getAuthToken: () => authToken,
+  });
 
+  const uploadHttp = createUploadClient({
+    env,
+    tenant,
+    timeout: uploadTimeout,
+    customHeaders: uploadCustomHeaders,
+    requestId,
+    getAuthToken: () => authToken,
+  });
 
-const setAuthToken = (token) => {
-    if (token === null) {
-        delete Request.defaults.headers.Authorization
-        return;
-    } else {
-        Request.defaults.headers.Authorization = `Bearer ${token}`;
-    }
-}
-
-const boot = async (host, payload) => {
-    Request.defaults.headers['X-Tenant'] = host;
-
-    const resp = await Tenant.getBootSettings(payload)
-
-    return resp;
-}
-
-const init = async (payload) => {
-
-    if (payload && payload.xApiKey && payload.tenant) {
-        return { tenant_id: payload.tenant }
-    }
-    if (!payload.tenant && !payload.xApiKey) {
-        // Get Tenant From Domain
-        const tenantResp = await Global.getTenantByDomain({ domain: 'www.google.com' })
-
-        return tenantResp
-    }
-    return null
-}
-
-
-module.exports = {
-    boot,
-    init,
-    setAuthToken,
-    Global,
-    Tenant,
-    Places,
-    Auth,
-    Merchant,
-    Catalog,
-    Promotional,
-    AddressBook,
-    Cart,
-    Wallet,
-    Search,
-    Order,
-    Review,
-    Page,
-    Payment,
-    Notification,
-    Upload,
-    Home,
-    PageBuilder,
-    getUUID,
-    FormBuilder,
-    Stats,
-    Recommendation
+  return {
+    requestId,
+    http,
+    uploadHttp,
+    addressBook: createAddressModule(http),
+    auth: createAuthModule(http),
+    cart: createCartModule(http),
+    catalog: createCatalogModule(http),
+    formBuilder: createFormBuilderModule(http),
+    global: createGlobalModule(http),
+    home: createHomeModule(http),
+    merchant: createMerchantModule(http),
+    notification: createNotificationModule(http),
+    order: createOrderModule(http),
+    page: createPageModule(http),
+    pageBuilder: createPageBuilderModule(http),
+    payment: createPaymentModule(http),
+    places: createPlacesModule(http),
+    promotional: createPromotionalModule(http),
+    recommendation: createRecommendationModule(http),
+    review: createReviewModule(http),
+    search: createSearchModule(http),
+    stats: createStatsModule(http),
+    tenant: createTenantModule(http),
+    upload: createUploadModule(uploadHttp),
+    wallet: createWalletModule(http),
+    setAuthToken(token) {
+      authToken = token || null;
+    },
+    getUUID() {
+      return requestId;
+    },
+  };
 }

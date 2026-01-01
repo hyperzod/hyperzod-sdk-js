@@ -1,33 +1,34 @@
-const Request = require("../../Request");
+export default function createOrderModule(http) {
+  const base = "/store/v1";
+  return {
+    //Place Order
+    placeOrder(payload) {
+      return http.post(`${base}/order`, payload);
+    },
 
-module.exports = {
-  //Place Order
-  placeOrder(payload) {
-    const url = `/store/v1/order`;
-    return Request.post(`${url}`, payload);
-  },
+    //fetch Orders
+    getOrders(params = {}) {
+      return http.get(`${base}/order/getOrdersByUserId`, { params });
+    },
 
-  //fetch Orders
-  getOrders(payload) {
-    const url = `/store/v1/order/getOrdersByUserId`;
-    return Request.get(`${url}`, { params: { ...payload } });
-  },
+    //fetch Order
+    getOrder(params = {}) {
+      return http.get(`${base}/order`, { params });
+    },
 
-  //fetch Orders
-  getOrder(payload) {
-    const url = `/store/v1/order`;
-    return Request.get(`${url}`, { params: { ...payload } });
-  },
+    //fetch order scheduling slots
+    getOrderScheduling(params = {}) {
+      return http.get(`${base}/order/getSchedulingSlots`, { params });
+    },
 
-  //fetch order schedulling slots
-  getOrderSchedulling(payload) {
-    const url = `/store/v1/order/getSchedulingSlots`;
-    return Request.get(`${url}`, { params: { ...payload } });
-  },
+    //fetch order scheduling slots (legacy method name)
+    getOrderSchedulling(params = {}) {
+      return this.getOrderScheduling(params);
+    },
 
-  //Get Order Tips
-  getOrderTip(payload) {
-    const url = `/store/v1/order/getOrderTip`;
-    return Request.get(`${url}`, { params: { ...payload } });
-  },
-};
+    //Get Order Tips
+    getOrderTip(params = {}) {
+      return http.get(`${base}/order/getOrderTip`, { params });
+    },
+  };
+}
