@@ -1,4 +1,4 @@
-export default function createCatalogModule(http) {
+export default function CatalogApi(http) {
   const base = "/store/v1";
   return {
     // List Product Tags

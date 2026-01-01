@@ -1,4 +1,4 @@
-export default function createNotificationModule(http) {
+export default function NotificationApi(http) {
   return {
     //Push Auth
     pushAuth(payload) {

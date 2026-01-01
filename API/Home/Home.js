@@ -1,4 +1,4 @@
-export default function createHomeModule(http) {
+export default function HomeApi(http) {
   return {
     // Get Home Page data
     homeData(payload) {

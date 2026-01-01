@@ -1,4 +1,4 @@
-export default function createCartModule(http) {
+export default function CartApi(http) {
   const base = "/store/v1";
   return {
     // Update Cart

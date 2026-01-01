@@ -1,4 +1,4 @@
-export default function createPageBuilderModule(http) {
+export default function PageBuilderApi(http) {
   const base = "/public/v1/page-builder/client";
   return {
     // Get Merchant Page

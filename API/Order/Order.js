@@ -1,4 +1,4 @@
-export default function createOrderModule(http) {
+export default function OrderApi(http) {
   const base = "/store/v1";
   return {
     //Place Order

@@ -1,4 +1,4 @@
-export default function createGlobalModule(http) {
+export default function GlobalApi(http) {
   return {
     // Get Tenant By Domain
     getTenantByDomain(params = {}) {

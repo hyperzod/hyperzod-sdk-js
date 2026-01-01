@@ -1,4 +1,4 @@
-export default function createPlacesModule(http) {
+export default function PlacesApi(http) {
   const base = "/store/v1/places";
   return {
     // Search Places

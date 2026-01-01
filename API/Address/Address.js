@@ -1,4 +1,4 @@
-export default function createAddressModule(http) {
+export default function AddressApi(http) {
   const base = "/store/v1";
   return {
     // Create Address

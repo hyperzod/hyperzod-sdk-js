@@ -1,4 +1,4 @@
-export default function createPromotionalModule(http) {
+export default function PromotionalApi(http) {
   const base = "/store/v1/promotional";
   return {
     // List Banners

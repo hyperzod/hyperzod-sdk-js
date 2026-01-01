@@ -1,4 +1,4 @@
-export default function createStatsModule(http) {
+export default function StatsApi(http) {
   return {
     // Check User is in Segment
     checkUserInSegment(params = {}) {

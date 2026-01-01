@@ -1,4 +1,4 @@
-export default function createPageModule(http) {
+export default function PageApi(http) {
   const base = "/store/v1/page";
   return {
     get(params) {

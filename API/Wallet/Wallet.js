@@ -1,4 +1,4 @@
-export default function createWalletModule(http) {
+export default function WalletApi(http) {
   const base = "/store/v1";
   return {
     // Get Wallet Transaction History

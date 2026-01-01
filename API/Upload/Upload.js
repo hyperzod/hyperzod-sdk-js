@@ -1,4 +1,4 @@
-export default function createUploadModule(http) {
+export default function UploadApi(http) {
   return {
     // upload files
     uploadFiles(payload, type) {

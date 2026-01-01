@@ -1,4 +1,4 @@
-export default function createAuthModule(http) {
+export default function AuthApi(http) {
   const base = "/auth/v1";
   return {
     // Login intent

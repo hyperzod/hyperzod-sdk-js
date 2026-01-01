@@ -1,4 +1,4 @@
-export default function createMerchantModule(http) {
+export default function MerchantApi(http) {
   const base = "/store/v1/merchant";
   return {
     // Find Nearby Merchants

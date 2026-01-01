@@ -1,4 +1,4 @@
-export default function createTenantModule(http) {
+export default function TenantApi(http) {
   const base = "/store/v1";
   return {
     // Get Boot Settings

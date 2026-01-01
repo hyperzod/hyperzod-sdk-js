@@ -1,4 +1,4 @@
-export default function createReviewModule(http) {
+export default function ReviewApi(http) {
   const base = "/store/v1/review";
   return {
     // Review Merchant

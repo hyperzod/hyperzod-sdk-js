@@ -1,4 +1,4 @@
-export default function createFormBuilderModule(http) {
+export default function FormBuilderApi(http) {
   return {
     //fetch custom forms
     getCustomForm(service, type, params = {}) {

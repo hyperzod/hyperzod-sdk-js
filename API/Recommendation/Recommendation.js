@@ -1,4 +1,4 @@
-export default function createRecommendationModule(http) {
+export default function RecommendationApi(http) {
   const base = "/store/v1/recommend";
   return {
     recommendProductsWithinMerchant(payload) {

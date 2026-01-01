@@ -1,4 +1,4 @@
-export default function createSearchModule(http) {
+export default function SearchApi(http) {
   const base = "/store/v1/search";
   return {
     // Get Search

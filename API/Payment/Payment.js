@@ -1,4 +1,4 @@
-export default function createPaymentModule(http) {
+export default function PaymentApi(http) {
   const base = "/store/v1/payment";
   return {
     // Get Payment Modes
