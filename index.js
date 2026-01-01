@@ -1,5 +1,5 @@
-import createHttpClient from "./core/HttpClient.js";
-import createUploadClient from "./core/UploadClient.js";
+import HttpClient from "./core/HttpClient.js";
+import UploadClient from "./core/UploadClient.js";
 import { v4 as uuid } from "uuid";
 
 import AddressApi from "./API/Address/Address.js";
@@ -25,7 +25,7 @@ import TenantApi from "./API/Tenant/Tenant.js";
 import UploadApi from "./API/Upload/Upload.js";
 import WalletApi from "./API/Wallet/Wallet.js";
 
-export default function createHyperzodSDK(config = {}) {
+export default function HyperzodSDK(config = {}) {
   const requestId = uuid();
   let authToken = null;
 
@@ -40,7 +40,7 @@ export default function createHyperzodSDK(config = {}) {
     ...restConfig
   } = config;
 
-  const http = createHttpClient({
+  const http = HttpClient({
     env,
     apiVariant,
     tenant,
@@ -50,7 +50,7 @@ export default function createHyperzodSDK(config = {}) {
     getAuthToken: () => authToken,
   });
 
-  const uploadHttp = createUploadClient({
+  const uploadHttp = UploadClient({
     env,
     tenant,
     timeout: uploadTimeout,

@@ -1,5 +1,5 @@
 import axios from "axios";
-import createSDKError from "./SDKError.js";
+import SDKError from "./SDKError.js";
 
 const UPLOAD_BASE_URLS = {
   dev: "https://upload.hyperzod.dev",
@@ -18,7 +18,7 @@ function normalizeError(error, requestId) {
   if (error.response) {
     const data = error.response.data || {};
     const config = error.config || {};
-    return createSDKError({
+    return SDKError({
       message: data.message || error.message || "Upload failed",
       code: data.code || "UPLOAD_ERROR",
       status: error.response.status,
@@ -30,7 +30,7 @@ function normalizeError(error, requestId) {
   }
 
   const config = error.config || {};
-  return createSDKError({
+  return SDKError({
     message: error.message || "Network error during upload",
     code: error.code || "NETWORK_ERROR",
     requestId: requestId,
@@ -40,7 +40,7 @@ function normalizeError(error, requestId) {
   });
 }
 
-export default function createUploadClient({
+export default function UploadClient({
   env = "dev",
   tenant = getDefaultTenant(),
   requestId,

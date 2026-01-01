@@ -1,4 +1,12 @@
-export default function createSDKError({ message, code, status, requestId, url, method, raw }) {
+export default function SDKError({
+  message,
+  code,
+  status,
+  requestId,
+  url,
+  method,
+  raw,
+}) {
   const error = new Error(message);
   error.name = "SDKError";
   error.code = code;
@@ -7,13 +15,13 @@ export default function createSDKError({ message, code, status, requestId, url, 
   error.url = url;
   error.method = method;
   error.raw = raw;
-  
+
   // Maintains proper stack trace for where our error was thrown (only available on V8)
   if (Error.captureStackTrace) {
-    Error.captureStackTrace(error, createSDKError);
+    Error.captureStackTrace(error, SDKError);
   }
 
-  error.toString = function() {
+  error.toString = function () {
     let str = `SDKError: ${this.message}`;
     if (this.code) str += ` [${this.code}]`;
     if (this.status) str += ` (HTTP ${this.status})`;

@@ -1,5 +1,5 @@
 import axios from "axios";
-import createSDKError from "./SDKError.js";
+import SDKError from "./SDKError.js";
 
 const BASE_URLS = {
   default: {
@@ -24,7 +24,7 @@ function normalizeError(error, requestId) {
   if (error.response) {
     const data = error.response.data || {};
     const config = error.config || {};
-    return createSDKError({
+    return SDKError({
       message: data.message || error.message || "Request failed",
       code: data.code || "API_ERROR",
       status: error.response.status,
@@ -36,7 +36,7 @@ function normalizeError(error, requestId) {
   }
 
   const config = error.config || {};
-  return createSDKError({
+  return SDKError({
     message: error.message || "Network error occurred",
     code: error.code || "NETWORK_ERROR",
     requestId: requestId,
@@ -46,7 +46,7 @@ function normalizeError(error, requestId) {
   });
 }
 
-export default function createHttpClient({
+export default function HttpClient({
   env = "dev",
   apiVariant = "default",
   tenant = getDefaultTenant(),
