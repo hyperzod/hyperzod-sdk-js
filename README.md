@@ -33,7 +33,7 @@ const products = await hyperzod.catalog.listProducts();
 To ensure you're using the same SDK instance across your application, create it once and import it everywhere:
 
 ```javascript
-// sdk.js
+// hyperzod.js
 import HyperzodSDK from "@hyperzod/hyperzod-sdk";
 
 // Create a singleton instance
@@ -49,12 +49,12 @@ Then import it anywhere:
 
 ```javascript
 // Component1.jsx
-import sdk from "./sdk";
-await sdk.auth.login({ email, password });
+import hyperzod from "./hyperzod";
+await hyperzod.auth.login({ email, password });
 
 // Component2.jsx
-import sdk from "./sdk"; // Same instance, shared auth token
-await sdk.cart.getCart();
+import hyperzod from "./hyperzod"; // Same instance, shared auth token
+await hyperzod.cart.getCart();
 ```
 
 ## Configuration Options
@@ -78,13 +78,13 @@ const hyperzod = HyperzodSDK({
 ```javascript
 // Login
 try {
-  const response = await sdk.auth.login({
+  const response = await hyperzod.auth.login({
     email: "user@example.com",
     password: "password123",
   });
 
   // Set auth token for subsequent requests
-  sdk.setAuthToken(response.token);
+  hyperzod.setAuthToken(response.token);
 
   // Store token in localStorage
   localStorage.setItem("authToken", response.token);
@@ -93,34 +93,34 @@ try {
 }
 
 // Signup
-const signupResponse = await sdk.auth.signup({
+const signupResponse = await hyperzod.auth.signup({
   email: "user@example.com",
   password: "password123",
   name: "John Doe",
 });
 
 // Get logged in user
-const user = await sdk.auth.getLoggedInUser();
+const user = await hyperzod.auth.getLoggedInUser();
 
 // Logout
-await sdk.auth.logout({});
-sdk.setAuthToken(null);
+await hyperzod.auth.logout({});
+hyperzod.setAuthToken(null);
 ```
 
 ### Catalog & Products
 
 ```javascript
 // List products
-const products = await sdk.catalog.listProducts({ page: 1, limit: 20 });
+const products = await hyperzod.catalog.listProducts({ page: 1, limit: 20 });
 
 // Get product by ID
-const product = await sdk.catalog.getProduct({ product_id: "123" });
+const product = await hyperzod.catalog.getProduct({ product_id: "123" });
 
 // Search products
-const searchResults = await sdk.catalog.searchProduct({ q: "pizza" });
+const searchResults = await hyperzod.catalog.searchProduct({ q: "pizza" });
 
 // Get product categories
-const categories = await sdk.catalog.listProductCategories();
+const categories = await hyperzod.catalog.listProductCategories();
 ```
 
 ## Error Handling
@@ -129,7 +129,7 @@ All SDK methods return promises that can throw `SDKError` objects:
 
 ```javascript
 try {
-  const response = await sdk.auth.login({ email, password });
+  const response = await hyperzod.auth.login({ email, password });
 } catch (error) {
   if (error.name === "SDKError") {
     console.error("Error Code:", error.code);
@@ -140,7 +140,7 @@ try {
     // Handle specific errors
     if (error.status === 401) {
       // Unauthorized - clear token, redirect to login
-      sdk.setAuthToken(null);
+      hyperzod.setAuthToken(null);
     } else if (error.status === 400 || error.status === 422) {
       // Validation error
       console.error("Validation failed:", error.raw?.response?.data?.errors);
@@ -158,42 +158,42 @@ try {
 - **Network Errors**: No `error.status`, check `error.code` (ECONNABORTED, ERR_NETWORK, etc.)
 - **Validation Errors**: Status 400/422, check `error.raw?.response?.data?.errors` for field-level errors
 
-## Available Modules
+## Available API
 
-| Module               | Description                                  |
-| -------------------- | -------------------------------------------- |
-| `sdk.auth`           | Authentication (login, signup, logout, etc.) |
-| `sdk.addressBook`    | Address management                           |
-| `sdk.cart`           | Shopping cart operations                     |
-| `sdk.catalog`        | Product catalog and categories               |
-| `sdk.formBuilder`    | Custom form builders                         |
-| `sdk.global`         | Global utilities (tenant, API keys)          |
-| `sdk.home`           | Home page data                               |
-| `sdk.merchant`       | Merchant operations                          |
-| `sdk.notification`   | Push notifications                           |
-| `sdk.order`          | Order management                             |
-| `sdk.page`           | Page operations                              |
-| `sdk.pageBuilder`    | Page builder functionality                   |
-| `sdk.payment`        | Payment processing                           |
-| `sdk.places`         | Places and geocoding                         |
-| `sdk.promotional`    | Banners and coupons                          |
-| `sdk.recommendation` | Product and merchant recommendations         |
-| `sdk.review`         | Reviews and ratings                          |
-| `sdk.search`         | Search functionality                         |
-| `sdk.stats`          | Statistics                                   |
-| `sdk.tenant`         | Tenant-specific operations                   |
-| `sdk.upload`         | File uploads                                 |
-| `sdk.wallet`         | Wallet operations                            |
+| Module                    | Description                                  |
+| ------------------------- | -------------------------------------------- |
+| `hyperzod.auth`           | Authentication (login, signup, logout, etc.) |
+| `hyperzod.addressBook`    | Address management                           |
+| `hyperzod.cart`           | Shopping cart operations                     |
+| `hyperzod.catalog`        | Product catalog and categories               |
+| `hyperzod.formBuilder`    | Custom form builders                         |
+| `hyperzod.global`         | Global utilities (tenant, API keys)          |
+| `hyperzod.home`           | Home page data                               |
+| `hyperzod.merchant`       | Merchant operations                          |
+| `hyperzod.notification`   | Push notifications                           |
+| `hyperzod.order`          | Order management                             |
+| `hyperzod.page`           | Page operations                              |
+| `hyperzod.pageBuilder`    | Page builder functionality                   |
+| `hyperzod.payment`        | Payment processing                           |
+| `hyperzod.places`         | Places and geocoding                         |
+| `hyperzod.promotional`    | Banners and coupons                          |
+| `hyperzod.recommendation` | Product and merchant recommendations         |
+| `hyperzod.review`         | Reviews and ratings                          |
+| `hyperzod.search`         | Search functionality                         |
+| `hyperzod.stats`          | Statistics                                   |
+| `hyperzod.tenant`         | Tenant-specific operations                   |
+| `hyperzod.upload`         | File uploads                                 |
+| `hyperzod.wallet`         | Wallet operations                            |
 
 ## Authentication Token Management
 
 ```javascript
 // Set token after login
-sdk.setAuthToken("your-token-here");
+hyperzod.setAuthToken("your-token-here");
 
 // Get current request ID
-const requestId = sdk.getUUID();
+const requestId = hyperzod.getUUID();
 
 // Clear token on logout
-sdk.setAuthToken(null);
+hyperzod.setAuthToken(null);
 ```
