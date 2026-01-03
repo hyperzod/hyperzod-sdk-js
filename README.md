@@ -25,7 +25,7 @@ const hyperzod = HyperzodSDK({
 });
 
 // Use the SDK
-const products = await hyperzod.catalog.listProducts();
+const products = await hyperzod.Catalog.listProducts();
 ```
 
 ### Singleton Pattern (Recommended)
@@ -50,11 +50,11 @@ Then import it anywhere:
 ```javascript
 // Component1.jsx
 import hyperzod from "./hyperzod";
-await hyperzod.auth.login({ email, password });
+await hyperzod.Auth.login({ email, password });
 
 // Component2.jsx
 import hyperzod from "./hyperzod"; // Same instance, shared auth token
-await hyperzod.cart.getCart();
+await hyperzod.Cart.getCart();
 ```
 
 ## Configuration Options
@@ -78,7 +78,7 @@ const hyperzod = HyperzodSDK({
 ```javascript
 // Login
 try {
-  const response = await hyperzod.auth.login({
+  const response = await hyperzod.Auth.login({
     email: "user@example.com",
     password: "password123",
   });
@@ -93,17 +93,17 @@ try {
 }
 
 // Signup
-const signupResponse = await hyperzod.auth.signup({
+const signupResponse = await hyperzod.Auth.signup({
   email: "user@example.com",
   password: "password123",
   name: "John Doe",
 });
 
 // Get logged in user
-const user = await hyperzod.auth.getLoggedInUser();
+const user = await hyperzod.Auth.getLoggedInUser();
 
 // Logout
-await hyperzod.auth.logout({});
+await hyperzod.Auth.logout({});
 hyperzod.setAuthToken(null);
 ```
 
@@ -111,16 +111,16 @@ hyperzod.setAuthToken(null);
 
 ```javascript
 // List products
-const products = await hyperzod.catalog.listProducts({ page: 1, limit: 20 });
+const products = await hyperzod.Catalog.listProducts({ page: 1, limit: 20 });
 
 // Get product by ID
-const product = await hyperzod.catalog.getProduct({ product_id: "123" });
+const product = await hyperzod.Catalog.getProduct({ product_id: "123" });
 
 // Search products
-const searchResults = await hyperzod.catalog.searchProduct({ q: "pizza" });
+const searchResults = await hyperzod.Catalog.searchProduct({ q: "pizza" });
 
 // Get product categories
-const categories = await hyperzod.catalog.listProductCategories();
+const categories = await hyperzod.Catalog.listProductCategories();
 ```
 
 ## Error Handling
@@ -129,7 +129,7 @@ All SDK methods return promises that can throw `SDKError` objects:
 
 ```javascript
 try {
-  const response = await hyperzod.auth.login({ email, password });
+  const response = await hyperzod.Auth.login({ email, password });
 } catch (error) {
   if (error.name === "SDKError") {
     console.error("Error Code:", error.code);
@@ -162,28 +162,28 @@ try {
 
 | Module                    | Description                                  |
 | ------------------------- | -------------------------------------------- |
-| `hyperzod.auth`           | Authentication (login, signup, logout, etc.) |
-| `hyperzod.addressBook`    | Address management                           |
-| `hyperzod.cart`           | Shopping cart operations                     |
-| `hyperzod.catalog`        | Product catalog and categories               |
-| `hyperzod.formBuilder`    | Custom form builders                         |
-| `hyperzod.global`         | Global utilities (tenant, API keys)          |
-| `hyperzod.home`           | Home page data                               |
-| `hyperzod.merchant`       | Merchant operations                          |
-| `hyperzod.notification`   | Push notifications                           |
-| `hyperzod.order`          | Order management                             |
-| `hyperzod.page`           | Page operations                              |
-| `hyperzod.pageBuilder`    | Page builder functionality                   |
-| `hyperzod.payment`        | Payment processing                           |
-| `hyperzod.places`         | Places and geocoding                         |
-| `hyperzod.promotional`    | Banners and coupons                          |
-| `hyperzod.recommendation` | Product and merchant recommendations         |
-| `hyperzod.review`         | Reviews and ratings                          |
-| `hyperzod.search`         | Search functionality                         |
-| `hyperzod.stats`          | Statistics                                   |
-| `hyperzod.tenant`         | Tenant-specific operations                   |
-| `hyperzod.upload`         | File uploads                                 |
-| `hyperzod.wallet`         | Wallet operations                            |
+| `hyperzod.Auth`           | Authentication (login, signup, logout, etc.) |
+| `hyperzod.Address`        | Address management                           |
+| `hyperzod.Cart`           | Shopping cart operations                     |
+| `hyperzod.Catalog`        | Product catalog and categories               |
+| `hyperzod.FormBuilder`    | Custom form builders                         |
+| `hyperzod.Global`         | Global utilities (tenant, API keys)          |
+| `hyperzod.Home`           | Home page data                               |
+| `hyperzod.Merchant`       | Merchant operations                          |
+| `hyperzod.Notification`   | Push notifications                           |
+| `hyperzod.Order`          | Order management                             |
+| `hyperzod.Page`           | Page operations                              |
+| `hyperzod.PageBuilder`    | Page builder functionality                   |
+| `hyperzod.Payment`        | Payment processing                           |
+| `hyperzod.Places`         | Places and geocoding                         |
+| `hyperzod.Promotional`    | Banners and coupons                          |
+| `hyperzod.Recommendation` | Product and merchant recommendations         |
+| `hyperzod.Review`         | Reviews and ratings                          |
+| `hyperzod.Search`         | Search functionality                         |
+| `hyperzod.Stats`          | Statistics                                   |
+| `hyperzod.Tenant`         | Tenant-specific operations                   |
+| `hyperzod.Upload`         | File uploads                                 |
+| `hyperzod.Wallet`         | Wallet operations                            |
 
 ## Authentication Token Management
 
