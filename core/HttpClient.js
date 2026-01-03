@@ -95,7 +95,7 @@ export default function HttpClient({
   );
 
   client.interceptors.response.use(
-    (res) => res.data,
+    (res) => res,
     (err) => Promise.reject(normalizeError(err, requestId))
   );
 

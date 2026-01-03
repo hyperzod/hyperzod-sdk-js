@@ -84,7 +84,7 @@ export default function UploadClient({
   );
 
   client.interceptors.response.use(
-    (res) => res.data,
+    (res) => res,
     (err) => Promise.reject(normalizeError(err, requestId))
   );
 
