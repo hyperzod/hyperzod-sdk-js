@@ -2,8 +2,14 @@ import axios from "axios";
 import SDKError from "./SDKError.js";
 
 const UPLOAD_BASE_URLS = {
-  dev: "https://upload.hyperzod.dev",
-  production: "https://upload.hyperzod.app",
+  default: {
+    dev: "https://upload.hyperzod.dev",
+    production: "https://upload.hyperzod.app",
+  },
+  secondary: {
+    dev: "http://upload.hyperzod53.com",
+    production: "http://upload-dev.hyperzod53.com",
+  },
 };
 
 // Helper to get default tenant (works in browser and Node.js)
@@ -42,6 +48,7 @@ function normalizeError(error, requestId) {
 
 export default function UploadClient({
   env = "dev",
+  apiVariant = "default",
   tenant = getDefaultTenant(),
   requestId,
   getAuthToken,
@@ -52,9 +59,11 @@ export default function UploadClient({
     throw new Error("UploadClient requires a requestId");
   }
 
-  const baseURL = UPLOAD_BASE_URLS[env];
+  const baseURL = UPLOAD_BASE_URLS[apiVariant]?.[env];
   if (!baseURL) {
-    throw new Error(`Invalid upload environment: "${env}" not found`);
+    throw new Error(
+      `Invalid upload configuration: variant "${apiVariant}" or env: "${env}" not found`
+    );
   }
 
   const client = axios.create({

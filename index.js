@@ -1,5 +1,5 @@
 import HttpClient from "./core/HttpClient.js";
-import UploadClient from "./core/UploadClient.js";
+import UploadClient from "./core/uploadClient.js";
 import { v4 as uuid } from "uuid";
 
 import AddressApi from "./API/Address/Address.js";
@@ -52,6 +52,7 @@ export default function HyperzodSDK(config = {}) {
 
   const uploadHttp = UploadClient({
     env,
+    apiVariant,
     tenant,
     timeout: uploadTimeout,
     customHeaders: uploadCustomHeaders,
