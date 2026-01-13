@@ -1,51 +1,44 @@
-const Request = require("../../Request");
+export default function CartApi(http) {
+  const base = "/store/v1";
+  return {
+    // Update Cart
+    updateCart(payload) {
+      return http.post(`${base}/cart`, payload);
+    },
 
-module.exports = {
-  // Update Cart
-  updateCart(payload) {
-    const url = `/store/v1/cart`;
-    return Request.post(`${url}`, payload);
-  },
+    // Delete Cart
+    deleteCart(params = {}) {
+      return http.delete(`${base}/cart`, { params });
+    },
 
-  // Delete Cart
-  deleteCart(payload) {
-    const url = `/store/v1/cart`;
-    return Request.delete(`${url}`, { params: { ...payload } });
-  },
+    // Apply Coupon
+    applyCoupon(payload) {
+      return http.post(`${base}/cart/coupon/apply`, payload);
+    },
 
-  // Apply Coupon
-  applyCoupon(payload) {
-    const url = `/store/v1/cart/coupon/apply`;
-    return Request.post(`${url}`, payload);
-  },
+    // Remove Coupon
+    removeCoupon(payload) {
+      return http.post(`${base}/cart/coupon/remove`, payload);
+    },
 
-  // Remove Coupon
-  removeCoupon(payload) {
-    const url = `/store/v1/cart/coupon/remove`;
-    return Request.post(`${url}`, payload);
-  },
+    // Fetch Cart
+    getCart(params = {}) {
+      return http.get(`${base}/cart`, { params });
+    },
 
-  // Fetch Cart
-  getCart(payload) {
-    const url = `/store/v1/cart`;
-    return Request.get(`${url}`, { params: { ...payload } });
-  },
+    // Fetch Carts
+    getCarts(params = {}) {
+      return http.get(`${base}/cart/list-by-ids`, { params });
+    },
 
-  // Fetch Carts
-  getCarts(payload) {
-    const url = `/store/v1/cart/list-by-ids`;
-    return Request.get(`${url}`, { params: { ...payload } });
-  },
+    // Validate Cart
+    validateCart(params = {}) {
+      return http.get(`${base}/cart/validate`, { params });
+    },
 
-  // Validate Cart
-  validateCart(payload) {
-    const url = `/store/v1/cart/validate`;
-    return Request.get(`${url}`, { params: { ...payload } });
-  },
-
-  // Validate Product
-  validateProduct(payload) {
-    const url = `/store/v1/cart/validate/product`;
-    return Request.post(`${url}`, payload);
-  },
-};
+    // Validate Product
+    validateProduct(payload) {
+      return http.post(`${base}/cart/validate/product`, payload);
+    },
+  };
+}

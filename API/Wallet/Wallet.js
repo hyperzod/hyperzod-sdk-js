@@ -1,33 +1,29 @@
-const Request = require("../../Request");
+export default function WalletApi(http) {
+  const base = "/store/v1";
+  return {
+    // Get Wallet Transaction History
+    getWalletTransactionHistory(params = {}) {
+      return http.get(`/wallet/transaction-history`, { params });
+    },
 
-module.exports = {
-  // Get Wallet Transaction History
-  getWalletTransactionHistory(payload) {
-    const url = `/wallet/transaction-history`;
-    return Request.get(`${url}`, { params: { ...payload } });
-  },
+    // Get Wallet Info
+    getWalletInfo(params = {}) {
+      return http.get(`/wallet/wallet-info`, { params });
+    },
 
-  // Get Wallet Info
-  getWalletInfo(payload) {
-    const url = `/wallet/wallet-info`;
-    return Request.get(`${url}`, { params: { ...payload } });
-  },
+    // Get User Wallet
+    getWallet(params = {}) {
+      return http.get(`${base}/wallet`, { params });
+    },
 
-  // Get User Wallet
-  getWallet(payload) {
-    const url = `/store/v1/wallet`;
-    return Request.get(`${url}`, { params: { ...payload } });
-  },
+    // Apply Wallet
+    applyWallet(payload) {
+      return http.post(`${base}/cart/wallet/apply`, payload);
+    },
 
-  // Apply Wallet
-  applyWallet(payload) {
-    const url = `/store/v1/cart/wallet/apply`;
-    return Request.post(`${url}`, payload);
-  },
-
-  // Remove Wallet
-  removeWallet(payload) {
-    const url = `/store/v1/cart/wallet/remove`;
-    return Request.post(`${url}`, payload);
-  },
-};
+    // Remove Wallet
+    removeWallet(payload) {
+      return http.post(`${base}/cart/wallet/remove`, payload);
+    },
+  };
+}

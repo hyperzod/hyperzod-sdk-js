@@ -1,14 +1,13 @@
-const Request = require('../../Request');
-
-module.exports = {
+export default function ReviewApi(http) {
+  const base = "/store/v1/review";
+  return {
     // Review Merchant
     reviewMerchant(payload) {
-        const url = `/store/v1/review`
-        return Request.post(`${url}`, payload )
+      return http.post(`${base}`, payload);
     },
 
-    getTopMerchantReviews(payload) {
-        const url = `/store/v1/review/top-merchant-reviews`
-        return Request.get(`${url}`, { params: { ...payload } })
-    }
+    getTopMerchantReviews(params = {}) {
+      return http.get(`${base}/top-merchant-reviews`, { params });
+    },
+  };
 }

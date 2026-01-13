@@ -1,21 +1,18 @@
-const Request = require('../../Request');
-
-module.exports = {
+export default function PromotionalApi(http) {
+  const base = "/store/v1/promotional";
+  return {
     // List Banners
-    listBanners(payload) {
-        const url = `/store/v1/promotional/banners`
-        return Request.get(`${url}`, { params: { ...payload }})
+    listBanners(params = {}) {
+      return http.get(`${base}/banners`, { params });
     },
 
     // List Coupons
-    listCoupons(payload) {
-        const url = `/store/v1/promotional/coupons`
-        return Request.get(`${url}`, { params: { ...payload }})
+    listCoupons(params = {}) {
+      return http.get(`${base}/coupons`, { params });
     },
 
-    listAvailableCoupons(payload) {
-        const url = `/store/v1/promotional/coupons/available`
-        return Request.get(`${url}`, { params: { ...payload }})
+    listAvailableCoupons(params = {}) {
+      return http.get(`${base}/coupons/available`, { params });
     },
-
+  };
 }

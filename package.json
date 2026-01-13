@@ -1,61 +1,33 @@
 {
-  "_args": [
-    [
-      "@hyperzod/hyperzod-sdk@1.0.26",
-      "."
-    ]
-  ],
-  "_from": "@hyperzod/hyperzod-sdk@1.0.26",
-  "_id": "@hyperzod/hyperzod-sdk@1.0.26",
-  "_inBundle": false,
-  "_integrity": "sha512-Uvgoi+GfflmZQ9sytcIyuM9gEQCY//jU6dC3l5hlVhhDcLfhxjdUPn9nVSPLPHbsdhSeR/2yJ+UXdZri0Pkuwg==",
-  "_location": "/@hyperzod/hyperzod-sdk",
-  "_phantomChildren": {},
-  "_requested": {
-    "type": "version",
-    "registry": true,
-    "raw": "@hyperzod/hyperzod-sdk@1.0.26",
-    "name": "@hyperzod/hyperzod-sdk",
-    "escapedName": "@hyperzod%2fhyperzod-sdk",
-    "scope": "@hyperzod",
-    "rawSpec": "1.0.26",
-    "saveSpec": null,
-    "fetchSpec": "1.0.26"
-  },
-  "_requiredBy": [
-    "/"
-  ],
-  "_resolved": "https://registry.npmjs.org/@hyperzod/hyperzod-sdk/-/hyperzod-sdk-1.0.26.tgz",
-  "_shasum": "3d09d63bbf7d712376cb08ae97a1529f07a77f7a",
-  "_spec": "1.0.26",
-  "_where": ".",
+  "name": "@hyperzod/hyperzod-sdk",
+  "version": "1.0.89",
+  "description": "JS SDK for Hyperzod",
+  "type": "module",
+  "main": "index.js",
+  "license": "ISC",
   "author": {
     "name": "Hyperzod"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hyperzod/hyperzod-sdk-js.git"
   },
   "bugs": {
     "url": "https://github.com/hyperzod/hyperzod-sdk-js/issues"
   },
-  "dependencies": {
-    "axios": "^0.21.1",
-    "axios-retry": "^3.1.9",
-    "uuid": "^8.3.2"
-  },
-  "deprecated": false,
-  "description": "JS SDK for Hyperzod",
   "homepage": "https://github.com/hyperzod/hyperzod-sdk-js#readme",
   "keywords": [
     "hyperzod",
     "hyperzod-sdk"
   ],
-  "license": "ISC",
-  "main": "index.js",
-  "name": "@hyperzod/hyperzod-sdk",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/hyperzod/hyperzod-sdk-js.git"
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "uuid": "^8.3.2"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "version": "1.0.88"
+  }
 }

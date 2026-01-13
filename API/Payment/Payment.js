@@ -1,27 +1,24 @@
-const Request = require("../../Request");
+export default function PaymentApi(http) {
+  const base = "/store/v1/payment";
+  return {
+    // Get Payment Modes
+    getPaymentModes(params = {}) {
+      return http.get(`${base}/payment-mode/tenant/client`, { params });
+    },
 
-module.exports = {
-  // Get Payment Modes
-  getPaymentModes(payload) {
-    const url = `/store/v1/payment/payment-mode/tenant/client`;
-    return Request.get(`${url}`, { params: { ...payload } });
-  },
+    // Create Payment
+    createPayment(method, params = {}) {
+      return http.get(`${base}/pg/callback/${method}`, { params });
+    },
 
-  // Create Paymemt
-  createPayment(method, payload) {
-    const url = `/store/v1/payment/pg/callback/${method}`;
-    return Request.get(`${url}`, { params: { ...payload } });
-  },
+    // Create Payment Intent
+    createPaymentIntent(pg_mode, payload) {
+      return http.post(`${base}/pg/paymentIntent/${pg_mode}`, payload);
+    },
 
-  // Create Payment Intent
-  createPaymentIntent(pg_mode, payload) {
-    const url = `/store/v1/payment/pg/paymentIntent/${pg_mode}`;
-    return Request.post(`${url}`, payload);
-  },
-
-  // Get Payment Intent
-  getPaymentIntent(pg_mode) {
-    const url = `/store/v1/payment/pg/paymentIntent/${pg_mode}`;
-    return Request.get(`${url}`);
-  },
-};
+    // Get Payment Intent
+    getPaymentIntent(pg_mode) {
+      return http.get(`${base}/pg/paymentIntent/${pg_mode}`);
+    },
+  };
+}

@@ -1,61 +1,53 @@
-const Request = require('../../Request');
-
-module.exports = {
+export default function SearchApi(http) {
+  const base = "/store/v1/search";
+  return {
     // Get Search
-    getSearch(payload) {
-        const url = `/store/v1/search`
-
-        return Request.get(`${url}`, { params: { ...payload }});
+    getSearch(params = {}) {
+      return http.get(`${base}`, { params });
     },
 
-    
     // Product by category
-    getProductsByCategory(payload) {
-      const url = `/store/v1/search/product-category/products`;
-      return Request.get(`${url}`, { params: { ...payload } });
-    },
-  
-    // Paginated products categories
-    getProductCategories(payload) {
-      const url = `/store/v1/search/product-category/list`;
-      return Request.get(`${url}`, { params: { ...payload } });
-    },
-    
-    getProductCategoriesByIds(payload) {
-      const url = `/store/v1/search/product-category/list-by-ids`;
-      return Request.get(`${url}`, { params: { ...payload } });
-    },
-    
-    getProduct(payload) {
-      const url = `/store/v1/search/product/view`;
-      return Request.get(`${url}`, { params: { ...payload } });
-    },
-    
-    //Get Product by Ids
-    getProductByIds(payload) {
-      const url = `/store/v1/search/product/list-by-ids`;
-      return Request.get(`${url}`, { params: { ...payload } });
-    },
-    
-    //Search Merchant Products
-    searchMerchantProducts(payload) {
-      const url = `/store/v1/search/merchant/products`;
-      return Request.get(`${url}`, { params: { ...payload } });
-    },
-    
-    getProductLabels(payload) {
-      const url = `/store/v1/search/product-label/list`;
-      return Request.get(`${url}`, { params: { ...payload } });
+    getProductsByCategory(params = {}) {
+      return http.get(`${base}/product-category/products`, { params });
     },
 
-    getMerchantData(payload) {
-      const url = `/store/v1/search/merchant/view`;
-      return Request.get(`${url}`, { params: { ...payload } });
+    // Paginated products categories
+    getProductCategories(params = {}) {
+      return http.get(`${base}/product-category/list`, { params });
+    },
+
+    getProductCategoriesByIds(params = {}) {
+      return http.get(`${base}/product-category/list-by-ids`, { params });
+    },
+
+    getProduct(params = {}) {
+      return http.get(`${base}/product/view`, { params });
+    },
+
+    //Get Product by Ids
+    getProductByIds(params = {}) {
+      return http.get(`${base}/product/list-by-ids`, { params });
+    },
+
+    //Search Merchant Products
+    searchMerchantProducts(params = {}) {
+      return http.get(`${base}/merchant/products`, { params });
+    },
+
+    getProductLabels(params = {}) {
+      return http.get(`${base}/product-label/list`, { params });
+    },
+
+    getMerchantData(params = {}) {
+      return http.get(`${base}/merchant/view`, { params });
     },
 
     // Find Nearby Merchants
     findNearByMerchants(payload) {
-      const url = `/store/v1/search/merchant/nearby`;
-      return Request.post(`${url}`, payload.data, {headers: payload.headers});
+      const { data, headers, ...rest } = payload || {};
+      return http.post(`${base}/merchant/nearby`, data || rest, {
+        ...(headers && { headers }),
+      });
     },
-}
+  };
+};

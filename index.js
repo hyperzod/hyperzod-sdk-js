@@ -1,102 +1,95 @@
-const Request = require('./Request')
-const { RequestFactory } = require('./RequestFactory')
-const { v4 } = require('uuid')
+import HttpClient from "./core/HttpClient.js";
+import UploadClient from "./core/UploadClient.js";
+import { v4 as uuid } from "uuid";
 
-// Modules To Import
-const Global = RequestFactory.get('global')
-const Tenant = RequestFactory.get('tenant')
-const Places = RequestFactory.get('places')
-const Auth = RequestFactory.get('auth')
-const Merchant = RequestFactory.get('merchant')
-const Catalog = RequestFactory.get('catalog')
-const Promotional = RequestFactory.get('promotional')
-const AddressBook = RequestFactory.get('addressBook')
-const Cart = RequestFactory.get('cart')
-const Wallet = RequestFactory.get('wallet')
-const Search = RequestFactory.get('search')
-const Order = RequestFactory.get('order')
-const Review = RequestFactory.get('review')
-const Page = RequestFactory.get('page')
-const Payment = RequestFactory.get('payment')
-const Notification = RequestFactory.get('notification')
-const Upload = RequestFactory.get('upload')
-const Home = RequestFactory.get('home')
-const PageBuilder = RequestFactory.get('pageBuilder')
-const FormBuilder = RequestFactory.get('formBuilder')
-const Stats = RequestFactory.get('stats')
-const Recommendation = RequestFactory.get('recommendation')
-window.HYPERZOD_API_ENV = 'dev'; // dev, production
+import AddressApi from "./API/Address/Address.js";
+import AuthApi from "./API/Auth/Auth.js";
+import CartApi from "./API/Cart/Cart.js";
+import CatalogApi from "./API/Catalog/Catalog.js";
+import FormBuilderApi from "./API/FormBuilder/FormBuilder.js";
+import GlobalApi from "./API/Global.js";
+import HomeApi from "./API/Home/Home.js";
+import MerchantApi from "./API/Merchant/Merchant.js";
+import NotificationApi from "./API/Notification/Notification.js";
+import OrderApi from "./API/Order/Order.js";
+import PageApi from "./API/Page/Page.js";
+import PageBuilderApi from "./API/PageBuilder/PageBuilder.js";
+import PaymentApi from "./API/Payment/Payment.js";
+import PlacesApi from "./API/Places/Places.js";
+import PromotionalApi from "./API/Promotional/Promotional.js";
+import RecommendationApi from "./API/Recommendation/Recommendation.js";
+import ReviewApi from "./API/Review/Review.js";
+import SearchApi from "./API/Search/Search.js";
+import StatsApi from "./API/Stats/Stats.js";
+import TenantApi from "./API/Tenant/Tenant.js";
+import UploadApi from "./API/Upload/Upload.js";
+import WalletApi from "./API/Wallet/Wallet.js";
 
-const myuuid = v4();
+export default function HyperzodSDK(config = {}) {
+  const requestId = uuid();
+  let authToken = null;
 
-Request.defaults.headers['X-Apm-Transaction-Id'] = myuuid;
+  const {
+    env,
+    apiVariant,
+    tenant,
+    timeout,
+    uploadTimeout,
+    customHeaders,
+    uploadCustomHeaders,
+    ...restConfig
+  } = config;
 
-const getUUID = () => {
-    if(myuuid) {
-        return myuuid
-    } else {
-        return null;
-    }
-}
+  const http = HttpClient({
+    env,
+    apiVariant,
+    tenant,
+    timeout,
+    customHeaders,
+    requestId,
+    getAuthToken: () => authToken,
+  });
 
+  const uploadHttp = UploadClient({
+    env,
+    tenant,
+    timeout: uploadTimeout,
+    customHeaders: uploadCustomHeaders,
+    requestId,
+    getAuthToken: () => authToken,
+  });
 
-const setAuthToken = (token) => {
-    if (token === null) {
-        delete Request.defaults.headers.Authorization
-        return;
-    } else {
-        Request.defaults.headers.Authorization = `Bearer ${token}`;
-    }
-}
-
-const boot = async (host, payload) => {
-    Request.defaults.headers['X-Tenant'] = host;
-
-    const resp = await Tenant.getBootSettings(payload)
-
-    return resp;
-}
-
-const init = async (payload) => {
-
-    if (payload && payload.xApiKey && payload.tenant) {
-        return { tenant_id: payload.tenant }
-    }
-    if (!payload.tenant && !payload.xApiKey) {
-        // Get Tenant From Domain
-        const tenantResp = await Global.getTenantByDomain({ domain: 'www.google.com' })
-
-        return tenantResp
-    }
-    return null
-}
-
-
-module.exports = {
-    boot,
-    init,
-    setAuthToken,
-    Global,
-    Tenant,
-    Places,
-    Auth,
-    Merchant,
-    Catalog,
-    Promotional,
-    AddressBook,
-    Cart,
-    Wallet,
-    Search,
-    Order,
-    Review,
-    Page,
-    Payment,
-    Notification,
-    Upload,
-    Home,
-    PageBuilder,
-    getUUID,
-    FormBuilder,
-    Stats,
-    Recommendation
+  return {
+    requestId,
+    http,
+    uploadHttp,
+    Address: AddressApi(http),
+    Auth: AuthApi(http),
+    Cart: CartApi(http),
+    Catalog: CatalogApi(http),
+    FormBuilder: FormBuilderApi(http),
+    Global: GlobalApi(http),
+    Home: HomeApi(http),
+    Merchant: MerchantApi(http),
+    Notification: NotificationApi(http),
+    Order: OrderApi(http),
+    Page: PageApi(http),
+    PageBuilder: PageBuilderApi(http),
+    Payment: PaymentApi(http),
+    Places: PlacesApi(http),
+    Promotional: PromotionalApi(http),
+    Recommendation: RecommendationApi(http),
+    Review: ReviewApi(http),
+    Search: SearchApi(http),
+    Stats: StatsApi(http),
+    Tenant: TenantApi(http),
+    Upload: UploadApi(uploadHttp),
+    Wallet: WalletApi(http),
+    setAuthToken(token) {
+      authToken = token || null;
+    },
+    getUUID() {
+      return requestId;
+    },
+  };
 }

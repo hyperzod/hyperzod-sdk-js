@@ -1,14 +1,13 @@
-const Request = require('../../Request');
-
-module.exports = {
+export default function PageBuilderApi(http) {
+  const base = "/public/v1/page-builder/client";
+  return {
     // Get Merchant Page
-    getMerchantPage(payload) {
-        const url = `/public/v1/page-builder/client/page/merchant`
-        return Request.get(`${url}`, { params: { ...payload } })
+    getMerchantPage(params = {}) {
+      return http.get(`${base}/page/merchant`, { params });
     },
     // Get Section
-    getSection(payload) {
-        const url = `/public/v1/page-builder/client/section`
-        return Request.get(`${url}`, { params: { ...payload } })
+    getSection(params = {}) {
+      return http.get(`${base}/section`, { params });
     },
+  };
 }

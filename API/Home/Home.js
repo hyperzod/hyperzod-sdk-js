@@ -1,9 +1,11 @@
-const Request = require('../../Request');
-
-module.exports = {
+export default function HomeApi(http) {
+  return {
     // Get Home Page data
     homeData(payload) {
-        const url = `/store/v1/home`
-        return Request.post(`${url}`, payload.data, {headers: payload.headers})
+      const { data, headers, ...rest } = payload || {};
+      return http.post(`/store/v1/home`, data || rest, {
+        ...(headers && { headers }),
+      });
     },
-}   
+  };
+};
