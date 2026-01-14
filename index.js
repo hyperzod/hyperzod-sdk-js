@@ -1,5 +1,5 @@
 import HttpClient from "./core/HttpClient.js";
-import UploadClient from "./core/uploadClient.js";
+import UploadClient from "./core/UploadClient.js";
 import { v4 as uuid } from "uuid";
 
 import AddressApi from "./API/Address/Address.js";
