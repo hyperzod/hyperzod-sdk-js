@@ -59,16 +59,78 @@ await hyperzod.Cart.getCart();
 
 ## Configuration Options
 
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `env` | `"dev" \| "production"` | `"dev"` | Environment to use for API requests |
+| `apiVariant` | `"default" \| "secondary"` | `"default"` | API variant (determines which domain to use). See [API Variant & Domains](#api-variant--domains) below |
+| `tenant` | `string` | Auto-detected from `window.location.hostname` in browser | Tenant domain to use for multi-tenant requests |
+| `timeout` | `number` | `30000` | Request timeout in milliseconds for regular API requests |
+| `uploadTimeout` | `number` | `60000` | Request timeout in milliseconds for upload requests |
+| `customHeaders` | `object` | `{}` | Custom headers to include with regular API requests |
+| `uploadCustomHeaders` | `object` | `{}` | Custom headers to include with upload requests |
+
+### API Variant & Domains
+
+The `apiVariant` option determines which API domain will be used for requests. Different domains are used for regular API requests and upload requests:
+
+#### Regular API Requests
+
+| API Variant | Environment | API Domain |
+|-------------|-------------|------------|
+| `default` | `dev` | `https://api.hyperzod.dev` |
+| `default` | `production` | `https://api.hyperzod.app` |
+| `secondary` | `dev` | `https://api-dev.hyperzod53.com` |
+| `secondary` | `production` | `https://api.hyperzod53.com` |
+
+#### Upload Requests
+
+| API Variant | Environment | Upload Domain |
+|-------------|-------------|---------------|
+| `default` | `dev` | `https://upload.hyperzod.dev` |
+| `default` | `production` | `https://upload.hyperzod.app` |
+| `secondary` | `dev` | `https://upload-dev.hyperzod53.com` |
+| `secondary` | `production` | `https://upload.hyperzod53.com` |
+
+**Example Usage:**
+
 ```javascript
+// Using default variant in production
 const hyperzod = HyperzodSDK({
-  env: "dev" | "production", // Environment (default: 'dev')
-  apiVariant: "default" | "secondary", // API variant (default: 'default')
-  tenant: "string", // Tenant domain (auto-detected in browser)
-  timeout: 30000, // Request timeout in ms (default: 30000)
-  uploadTimeout: 60000, // Upload timeout in ms (default: 60000)
-  customHeaders: {}, // Custom headers for regular requests
-  uploadCustomHeaders: {}, // Custom headers for upload requests
+  env: "production",
+  apiVariant: "default", // Uses api.hyperzod.app and upload.hyperzod.app
 });
+
+// Using secondary variant in dev
+const hyperzod = HyperzodSDK({
+  env: "dev",
+  apiVariant: "secondary", // Uses api-dev.hyperzod53.com and upload-dev.hyperzod53.com
+});
+```
+
+### API Versioning
+
+The SDK uses API versioning at the folder/module level. All current APIs are organized under **V1**:
+
+- **V1 APIs**: All existing API modules are located in `API/V1/` folder
+  - All current API modules (Auth, Catalog, Cart, etc.) use V1
+  - Example: `hyperzod.Catalog.listProducts()` uses the V1 implementation
+
+- **Future V2 APIs**: When V2 is introduced, new API modules will be created in `API/V2/` folder and named with the `V2` suffix (e.g., `CatalogApiV2`)
+  - Example: `hyperzod.CatalogV2.listProducts()` would use the V2 implementation from `API/V2/Catalog/CatalogApiV2.js`
+  - Both V1 and V2 APIs can be used simultaneously in the same SDK instance
+  - V2 APIs will be registered alongside V1 APIs in the SDK
+
+**Folder Structure:**
+```
+API/
+├── V1/           # Current API version (all existing modules)
+│   ├── Address/
+│   ├── Auth/
+│   ├── Cart/
+│   ├── Catalog/
+│   └── ...
+└── V2/           # Future API version (when needed)
+    └── ...
 ```
 
 ## Usage Examples
