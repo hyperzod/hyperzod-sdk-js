@@ -7,8 +7,8 @@ const UPLOAD_BASE_URLS = {
     production: "https://upload.hyperzod.app",
   },
   secondary: {
-    dev: "http://upload.hyperzod53.com",
-    production: "http://upload-dev.hyperzod53.com",
+    dev: "https://upload.hyperzod53.com",
+    production: "https://upload-dev.hyperzod53.com",
   },
 };
 
