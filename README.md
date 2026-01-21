@@ -13,13 +13,13 @@ npm install @hyperzod/hyperzod-sdk
 ### Basic Setup
 
 ```javascript
-import HyperzodSDK from "@hyperzod/hyperzod-sdk";
+import HyperzodSDK from '@hyperzod/hyperzod-sdk';
 
 // Create SDK instance
 const hyperzod = HyperzodSDK({
-  env: "dev", // or 'production'
-  apiVariant: "default", // or 'secondary'
-  tenant: "your-tenant.com", // optional, auto-detected from window.location.hostname in browser
+  env: 'dev', // or 'production'
+  apiVariant: 'default', // or 'secondary'
+  tenant: 'your-tenant.com', // optional, auto-detected from window.location.hostname in browser
   timeout: 30000, // optional, default 30 seconds
   uploadTimeout: 60000, // optional, default 60 seconds for uploads
 });
@@ -34,12 +34,12 @@ To ensure you're using the same SDK instance across your application, create it 
 
 ```javascript
 // hyperzod.js
-import HyperzodSDK from "@hyperzod/hyperzod-sdk";
+import HyperzodSDK from '@hyperzod/hyperzod-sdk';
 
 // Create a singleton instance
 const hyperzod = HyperzodSDK({
-  env: process.env.NODE_ENV === "production" ? "production" : "dev",
-  apiVariant: "default",
+  env: process.env.NODE_ENV === 'production' ? 'production' : 'dev',
+  apiVariant: 'default',
 });
 
 export default hyperzod;
@@ -49,11 +49,11 @@ Then import it anywhere:
 
 ```javascript
 // Component1.jsx
-import hyperzod from "./hyperzod";
+import hyperzod from './hyperzod';
 await hyperzod.Auth.login({ email, password });
 
 // Component2.jsx
-import hyperzod from "./hyperzod"; // Same instance, shared auth token
+import hyperzod from './hyperzod'; // Same instance, shared auth token
 await hyperzod.Cart.getCart();
 ```
 
@@ -96,14 +96,14 @@ The `apiVariant` option determines which API domain will be used for requests. D
 ```javascript
 // Using default variant in production
 const hyperzod = HyperzodSDK({
-  env: "production",
-  apiVariant: "default", // Uses api.hyperzod.app and upload.hyperzod.app
+  env: 'production',
+  apiVariant: 'default', // Uses api.hyperzod.app and upload.hyperzod.app
 });
 
 // Using secondary variant in dev
 const hyperzod = HyperzodSDK({
-  env: "dev",
-  apiVariant: "secondary", // Uses api-dev.hyperzod53.com and upload-dev.hyperzod53.com
+  env: 'dev',
+  apiVariant: 'secondary', // Uses api-dev.hyperzod53.com and upload-dev.hyperzod53.com
 });
 ```
 
@@ -142,24 +142,24 @@ API/
 // Login
 try {
   const response = await hyperzod.Auth.login({
-    email: "user@example.com",
-    password: "password123",
+    email: 'user@example.com',
+    password: 'password123',
   });
 
   // Set auth token for subsequent requests
   hyperzod.setAuthToken(response.token);
 
   // Store token in localStorage
-  localStorage.setItem("authToken", response.token);
+  localStorage.setItem('authToken', response.token);
 } catch (error) {
-  console.error("Login failed:", error);
+  console.error('Login failed:', error);
 }
 
 // Signup
 const signupResponse = await hyperzod.Auth.signup({
-  email: "user@example.com",
-  password: "password123",
-  name: "John Doe",
+  email: 'user@example.com',
+  password: 'password123',
+  name: 'John Doe',
 });
 
 // Get logged in user
@@ -177,10 +177,10 @@ hyperzod.setAuthToken(null);
 const products = await hyperzod.Catalog.listProducts({ page: 1, limit: 20 });
 
 // Get product by ID
-const product = await hyperzod.Catalog.getProduct({ product_id: "123" });
+const product = await hyperzod.Catalog.getProduct({ product_id: '123' });
 
 // Search products
-const searchResults = await hyperzod.Catalog.searchProduct({ q: "pizza" });
+const searchResults = await hyperzod.Catalog.searchProduct({ q: 'pizza' });
 
 // Get product categories
 const categories = await hyperzod.Catalog.listProductCategories();
@@ -194,11 +194,11 @@ All SDK methods return promises that can throw `SDKError` objects:
 try {
   const response = await hyperzod.Auth.login({ email, password });
 } catch (error) {
-  if (error.name === "SDKError") {
-    console.error("Error Code:", error.code);
-    console.error("HTTP Status:", error.status);
-    console.error("Message:", error.message);
-    console.error("Request ID:", error.requestId);
+  if (error.name === 'SDKError') {
+    console.error('Error Code:', error.code);
+    console.error('HTTP Status:', error.status);
+    console.error('Message:', error.message);
+    console.error('Request ID:', error.requestId);
 
     // Handle specific errors
     if (error.status === 401) {
@@ -206,10 +206,10 @@ try {
       hyperzod.setAuthToken(null);
     } else if (error.status === 400 || error.status === 422) {
       // Validation error
-      console.error("Validation failed:", error.raw?.response?.data?.errors);
+      console.error('Validation failed:', error.raw?.response?.data?.errors);
     } else if (!error.status) {
       // Network error
-      console.error("Network error:", error.message);
+      console.error('Network error:', error.message);
     }
   }
 }
@@ -252,7 +252,7 @@ try {
 
 ```javascript
 // Set token after login
-hyperzod.setAuthToken("your-token-here");
+hyperzod.setAuthToken('your-token-here');
 
 // Get current request ID
 const requestId = hyperzod.getUUID();
@@ -260,3 +260,13 @@ const requestId = hyperzod.getUUID();
 // Clear token on logout
 hyperzod.setAuthToken(null);
 ```
+
+## Publishing the SDK
+
+To publish the SDK to npm, use the following command:
+
+```bash
+npm publish --access public
+```
+
+> ⚠️ **Note**: Make sure you have updated the version in `package.json` and are logged in to the correct npm account before publishing.
