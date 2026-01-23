@@ -79,14 +79,17 @@ export default function UploadClient({
   // Attach auth token dynamically (same pattern as HttpClient)
   client.interceptors.request.use(
     (config) => {
-      const token = getAuthToken?.();
+       // Only set Authorization if not already provided in request headers
+      if (!config.headers?.Authorization) {
+        const token = getAuthToken?.();
 
-      if (token) {
-        config.headers.Authorization = `Bearer ${token}`;
-      } else {
-        delete config.headers.Authorization;
+        if (token) {
+          config.headers.Authorization = `Bearer ${token}`;
+        } else {
+          delete config.headers.Authorization;
+        }
       }
-
+      
       return config;
     },
     (error) => Promise.reject(error)
