@@ -9,6 +9,7 @@ import CatalogApi from "./API/V1/Catalog/Catalog.js";
 import FormBuilderApi from "./API/V1/FormBuilder/FormBuilder.js";
 import GlobalApi from "./API/V1/Global.js";
 import HomeApi from "./API/V1/Home/Home.js";
+import MembershipApi from "./API/V1/Membership/Membership.js";
 import MerchantApi from "./API/V1/Merchant/Merchant.js";
 import NotificationApi from "./API/V1/Notification/Notification.js";
 import OrderApi from "./API/V1/Order/Order.js";
@@ -71,6 +72,7 @@ export default function HyperzodSDK(config = {}) {
     FormBuilder: FormBuilderApi(http),
     Global: GlobalApi(http),
     Home: HomeApi(http),
+    Membership: MembershipApi(http),
     Merchant: MerchantApi(http),
     Notification: NotificationApi(http),
     Order: OrderApi(http),
