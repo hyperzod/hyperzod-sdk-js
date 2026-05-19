@@ -4,7 +4,9 @@ export default function MembershipApi(http) {
     // Get Membership by ID
     getMembership(params = {}) {
       const { id, ...rest } = params;
-      return http.get(`${base}/membership/${id}`, { params: rest });
+      return http.get(`${base}/membership/user-membership`, {
+        params: { ...(id ? { id } : {}), ...rest },
+      });
     },
   };
 }
