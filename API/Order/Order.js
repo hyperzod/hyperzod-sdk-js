@@ -30,4 +30,10 @@ module.exports = {
     const url = `/store/v1/order/getOrderTip`;
     return Request.get(`${url}`, { params: { ...payload } });
   },
+
+  //Get Merchant Tips
+  getMerchantTip(payload) {
+    const url = `/store/v1/order/getMerchantTip`;
+    return Request.get(`${url}`, { params: { ...payload } });
+  },
 };
