@@ -30,5 +30,10 @@ export default function OrderApi(http) {
     getOrderTip(params = {}) {
       return http.get(`${base}/order/getOrderTip`, { params });
     },
+
+    //Get Merchant Tips
+    getMerchantTip(params = {}) {
+      return http.get(`${base}/order/getMerchantTip`, { params });
+    },
   };
 }
