@@ -41,5 +41,10 @@ export default function CatalogApi(http) {
     getProductsByIds(params = {}) {
       return http.get(`${base}/catalog/products/listByIds`, { params });
     },
+
+    //Get Merchant Filter
+    getMerchantFilters(merchantId, params = {}) {
+      return http.get(`${base}/catalog/merchant-filters/${merchantId}`, { params });
+    },
   };
 }
