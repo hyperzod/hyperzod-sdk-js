@@ -42,6 +42,11 @@ export default function SearchApi(http) {
       return http.get(`${base}/merchant/view`, { params });
     },
 
+    // Autosuggest merchant & product names
+    autosuggest(params = {}) {
+      return http.get(`${base}/autosuggest`, { params });
+    },
+
     // Find Nearby Merchants
     findNearByMerchants(payload) {
       const { data, headers, ...rest } = payload || {};
